@@ -5,6 +5,7 @@ import "./index.css"
 
 import Home from "./components/pages/Home/Home.js"
 import Projects from "./components/pages/Projects/Projects.js"
+import Personal from "./components/pages/Personal/Personal.js"
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Route path="/" element={<text>hi</text>}/>
       <Route path="/home" element={<Home/>}/>
       <Route path="/projects" element={<Projects/>}/>
+      <Route path="/personal" element={<Personal/>}/>
     </Routes>
   </BrowserRouter>
   </>

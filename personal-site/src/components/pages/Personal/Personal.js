@@ -1,18 +1,21 @@
-import { Outlet, Link } from "react-router-dom";
 
 
-const Home = () => {
+
+const Personal = () => {
+
     return(
         <>
         <div style={{display:'flex', flexDirection:"column", alignItems:'center', justifyContent:'flex-start'}}>
             <div style={{maxWidth:1240}}>
                 <div>
-                    <h2>Home stuff</h2>
+                    <h2>About Me</h2>
                 </div>
             </div>
         </div>
         </>
     )
+
+
 }
 
-export default Home;
+export default Personal

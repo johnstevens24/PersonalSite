@@ -1,28 +1,63 @@
 @import url('../../../index.css');
 
-.projectDiv {
-    display: flex;
-    flex-direction: column;
-    padding-top: 3rem;
-    width: 50%;
-    height: 30vh;
-    border:1px;
-    border-color: black;
-    border-width: 1px;
+@keyframes slideInFromLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-100%);
+        filter:blur(5px)
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
+@keyframes slideInFromRight {
+    from {
+        opacity: 0;
+        transform: translateX(100%);
+        filter:blur(5px)
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.projectDiv {
+    display: flex;
+    flex-direction: row;
+    margin: 3rem;
+    width: 100%;
+    height: 40vh;
+}
+
+
+.infoDiv {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    height: 100%;
+    animation: slideInFromLeft 1s ease-in forwards;
+}
+
+.imageDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 50%;
+    height: 100%;
+    animation: slideInFromRight 1s ease-in forwards;
+}
 
 b {
     color:var(--primary-dark);
 }
 
-/* .TellMe {
-    color:orange;
-}
-
 .TILT {
-    color:red;
-} */
+    font-style: italic;
+} 
 
 div > a {
     display: flex;
@@ -34,4 +69,11 @@ div > a {
     color:white;
     border-radius:100px;
     padding:5px;
+    margin-top: 2rem;
+}
+
+img {
+    width:'100%';
+    height:100;
+    object-fit: cover;
 }
