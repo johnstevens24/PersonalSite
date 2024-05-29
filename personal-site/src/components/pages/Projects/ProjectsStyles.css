@@ -38,7 +38,7 @@
     flex-direction: column;
     width: 50%;
     height: 100%;
-    animation: slideInFromLeft 1s ease-in forwards;
+    /* animation: slideInFromLeft 1s ease-in forwards; */
 }
 
 .imageDiv {
@@ -48,7 +48,6 @@
     justify-content: flex-start;
     width: 50%;
     height: 100%;
-    animation: slideInFromRight 1s ease-in forwards;
 }
 
 b {
@@ -76,4 +75,33 @@ img {
     width:'100%';
     height:100;
     object-fit: cover;
+}
+
+
+
+
+/* image transition stuff */
+.projectDiv.show > .imageDiv {
+    transform: translateX(0%);
+    opacity: 1;
+    transition: all 1s;
+}
+
+.projectDiv.hidden > .imageDiv {
+    transform: translateX(100%);
+    opacity: 0;
+    transition: all 1s;
+}
+
+/* image transition stuff */
+.projectDiv.show > .infoDiv {
+    transform: translateX(0%);
+    opacity: 1;
+    transition: all 1s;
+}
+
+.projectDiv.hidden > .infoDiv {
+    transform: translateX(-100%);
+    opacity: 0;
+    transition: all 1s;
 }

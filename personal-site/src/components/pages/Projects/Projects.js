@@ -1,4 +1,5 @@
-import React from "react";
+import {React, useEffect } from "react";
+
 import './ProjectsStyles.css'
 
 const Projects = () => {
@@ -27,20 +28,42 @@ const Projects = () => {
 
     ]
 
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('show')
-            } else {
-                entry.target.classList.remove('show')
-            }
+    // const observer = new IntersectionObserver((entries) => {
+    //     entries.forEach((entry) => {
+    //         if (entry.isIntersecting) {
+    //             entry.target.classList.add('show');
+    //         } else {
+    //             entry.target.classList.remove('show');
+    //         }
 
-        })
-    }
-    )
-    const imageDivs = document.querySelector('.imageDiv')
+    //     })
+    // }
+    // )
+    // const imageDivs = document.querySelectorAll('.imageDiv');
+    // imageDivs.forEach((element) => observer.observe(element)); 
 
 
+    useEffect(() => {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.remove('hidden');
+                    entry.target.classList.add('show');
+                } else {
+                    entry.target.classList.add('hidden');
+                    entry.target.classList.remove('show');
+                }
+            });
+        });
+
+        const imageDivs = document.querySelectorAll('.projectDiv');
+        imageDivs.forEach((element) => observer.observe(element));
+
+        // Cleanup function to unobserve elements if the component unmounts
+        return () => {
+            imageDivs.forEach((element) => observer.unobserve(element));
+        };
+    }, []);
 
     return(
         <>
