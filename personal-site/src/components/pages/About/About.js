@@ -3,10 +3,14 @@ import './AboutStyles.css'
 
 
 const About = () => {
-    const elementRef = useRef(null)
+    const firstDivRef = useRef(null)
     const [titleOffsetInitial, setTitleOffsetInitial] = useState(20)
     const [titleOffset, setTitleOffset] = useState(titleOffsetInitial)
-    const [rectPercentVisible, setRectPercentVisible] = useState(0)
+    const [firstDivPercentVisible, setFirstDivPercentVisible] = useState(0)
+
+    const secondDivRef = useRef(null)
+    const [secondDivHeight, setSecondDivHeight] = useState(150)
+    const [secondDivPercentVisible, setSecondDivPercentVisible] = useState(0)
 
     useEffect(() => {
         window.addEventListener('scroll', checkVisibility);    
@@ -16,9 +20,9 @@ const About = () => {
       }, []);
 
     const checkVisibility = () => {
-        //once element has been assinged, start monitoring it
-        if (elementRef.current) {
-            const rect = elementRef.current.getBoundingClientRect();
+        
+        if (firstDivRef.current) {
+            const rect = firstDivRef.current.getBoundingClientRect();
             if(rect.top < 0 && rect.bottom > 120)
             {
                 setTitleOffset(-rect.top+titleOffsetInitial)
@@ -28,21 +32,35 @@ const About = () => {
             let multiplier = 1.25
             if(percent >= 0 && percent <= (100/multiplier))
             {
-                setRectPercentVisible(percent*multiplier)
-                
+                setFirstDivPercentVisible(percent*multiplier)
             }
             //this gets rid of a small maybe one or two pixel wide part that would show when its supposed to be set to zero
             if(percent < 0)
-                setRectPercentVisible(0)
+                setFirstDivPercentVisible(0)
             if(percent*multiplier > 100)
-                setRectPercentVisible(100)
+            {
+                setFirstDivPercentVisible(100)
+            }
+                
+        }
+
+        if (secondDivRef.current) {
+            const rect = secondDivRef.current.getBoundingClientRect();
+            let percent = ((-(rect.top-220))/secondDivHeight)*100
+            if(percent <= 0)
+                setSecondDivPercentVisible(0)
+            else
+            if(percent > 0 && percent < 100)
+                setSecondDivPercentVisible(percent)
+            else
+            if(percent > 100)
+                setSecondDivPercentVisible(100)
         }
     };
 
 
     const languages = [
         {name:"React", icon:"https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg"}, 
-        // {name:"React Native", icon:""}, 
         {name:"Github", icon:"https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg"}, 
         {name:"Gitlab", icon:"https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/gitlab/gitlab-original.svg"}, 
         {name:"SQL", icon:"https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azuresqldatabase/azuresqldatabase-original.svg"},
@@ -77,7 +95,7 @@ const About = () => {
                     <div className="languageContainerInner" style={{display:'flex', flexDirection:'row', justifyContent:'flex-start', width:'100%'}}>
                         
                         {/* div for the moving text on the left */}
-                        <div ref={elementRef} style={{height:'auto', display:'flex', flexDirection:'column', paddingLeft:20, paddingRight:20}}>
+                        <div ref={firstDivRef} style={{height:'auto', display:'flex', flexDirection:'column', paddingLeft:20, paddingRight:20}}>
                             <h2 style={{position:'relative', top:`${titleOffset}px`, left:0}}>Familiar Languages & Technologies</h2>
                         </div>
 
@@ -86,8 +104,8 @@ const About = () => {
 
                             {/* this div allows the h2 above some padding along the as users scroll, but also aligns it properly with the first language*/}
                             <div style={{height:`${titleOffsetInitial}`}}></div>
-                            {languages.map((language) => (
-                                <div style={{display:'flex', flexDirection:'row', width:'100%', justifyContent:'space-between'}}>
+                            {languages.map((language, index) => (
+                                <div key={index} style={{display:'flex', flexDirection:'row', width:'100%', justifyContent:'space-between'}}>
                                     <h2>{language.name}</h2>
                                     <div style={{flexDirection:'row', paddingRight:5}}>
                                         <img src={language.icon} style={{height:40}}></img>
@@ -100,15 +118,17 @@ const About = () => {
 
                     {/* div for the moving colored bar on the bottom */}
                     <div style={{height:40, width:'auto', display:'flex', flexDirection:'row', justifyContent:'flex-end', alignItems:'center'}}>
-                        <div style={{height:'100%', width:`${rectPercentVisible}%`, backgroundColor:'#007AFF'}}></div>
+                        <div style={{height:'100%', width:`${firstDivPercentVisible}%`, backgroundColor:'#007AFF'}}></div>
                     </div>
                 </div>
+                
 
 
-
-
-
-               <div style={{height:4000, backgroundColor:'#007AFF', width:40}}></div>
+                {/* Hobbies div */}
+               <div ref={secondDivRef} style={{height:`${secondDivHeight}px`, width:'auto', backgroundColor:'grey'}}>
+                    <div style={{width:40, height:`${secondDivPercentVisible}%`, backgroundColor:'#007AFF'}}></div>
+                </div>
+               <div style={{height:3000}}></div>
             </div>
         </div>
         </>
