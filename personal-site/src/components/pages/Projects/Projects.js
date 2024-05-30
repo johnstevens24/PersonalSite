@@ -29,7 +29,8 @@ const Projects = () => {
 
     ]
 
-    const images = ['../../../assets/images/sampleImage.jpg','../../../assets/images/sampleImage.jpg']
+    const tellMeImages = [require('../../../assets/images/TellMeScreenshots/IMG_4305.PNG'), require('../../../assets/images/TellMeScreenshots/IMG_4306.PNG'), require('../../../assets/images/TellMeScreenshots/IMG_4310.PNG'), require('../../../assets/images/TellMeScreenshots/IMG_4311.PNG')]
+    // const images = [require('../../../assets/images/TellMeScreenshots/IMG_4305.PNG')]
 
 
 
@@ -72,11 +73,8 @@ const Projects = () => {
                         <div className="imageDiv">
                             {/* <img alt="a flower... for now" src={require('../../../assets/images/sampleImage.jpg')}></img> */}
                             <Carousel  showArrows={false} showStatus={false} showThumbs={false} showIndicators={false} autoPlay={true} infiniteLoop={true} interval={5000}>
-                                
-                                
-                                <img className="slide" alt="sample_file" src={require('../../../assets/images/sampleImage.jpg')}/>
-                                <img className="slide" alt="sample_file" src={require('../../../assets/images/sampleImage.jpg')}/>
-                                
+                                {project.name === 'TellMe' ? tellMeImages.map((image) => (<img className="slide" alt="sample_file" src={image}/>)): <></>}
+                                                                
                             </Carousel>
                         </div>
                     </div>
