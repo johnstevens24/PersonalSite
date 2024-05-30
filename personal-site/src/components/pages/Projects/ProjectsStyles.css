@@ -29,7 +29,7 @@
     flex-direction: row;
     margin: 3rem;
     width: 100%;
-    height: 40vh;
+    height: 400px;
 }
 
 
@@ -38,7 +38,6 @@
     flex-direction: column;
     width: 50%;
     height: 100%;
-    /* animation: slideInFromLeft 1s ease-in forwards; */
 }
 
 .imageDiv {
@@ -49,6 +48,7 @@
     width: 50%;
     height: 100%;
 }
+
 
 b {
     color:var(--primary-dark);
@@ -72,9 +72,9 @@ div > a {
 }
 
 img {
-    width:'100%';
-    height:100;
-    object-fit: cover;
+    width:100%;
+    height:90%;
+    object-fit:contain;
 }
 
 
@@ -93,7 +93,7 @@ img {
     transition: all 1s;
 }
 
-/* image transition stuff */
+/* info transition stuff */
 .projectDiv.show > .infoDiv {
     transform: translateX(0%);
     opacity: 1;

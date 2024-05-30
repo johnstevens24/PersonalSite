@@ -1,10 +1,11 @@
 import {React, useEffect } from "react";
+import { Carousel } from 'react-responsive-carousel';
 
 import './ProjectsStyles.css'
 
 const Projects = () => {
 
-    let projects = [
+    const projects = [
         {name:"TILT", 
         type:"Mobile App", 
         techStack:"React Native", 
@@ -28,19 +29,8 @@ const Projects = () => {
 
     ]
 
-    // const observer = new IntersectionObserver((entries) => {
-    //     entries.forEach((entry) => {
-    //         if (entry.isIntersecting) {
-    //             entry.target.classList.add('show');
-    //         } else {
-    //             entry.target.classList.remove('show');
-    //         }
+    const images = ['../../../assets/images/sampleImage.jpg','../../../assets/images/sampleImage.jpg']
 
-    //     })
-    // }
-    // )
-    // const imageDivs = document.querySelectorAll('.imageDiv');
-    // imageDivs.forEach((element) => observer.observe(element)); 
 
 
     useEffect(() => {
@@ -79,7 +69,21 @@ const Projects = () => {
                             <a href={project.githubLink}>GitHub Link</a>
                         </div>
                         <div className="imageDiv">
-                            <img alt="a flower... for now" src={require('../../../assets/images/sampleImage.jpg')}></img>
+                            {/* <img alt="a flower... for now" src={require('../../../assets/images/sampleImage.jpg')}></img> */}
+                            <Carousel  showArrows={true}
+                                    showThumbs={false}
+                                    showStatus={false}
+                                    infiniteLoop={false}
+                                    useKeyboardArrows={true}
+                                    autoPlay={false}
+                                    stopOnHover={true}
+                                    >
+                                {images.map((URL, index) => (
+                                <div className="slide">
+                                    <img alt="sample_file" src={require('../../../assets/images/sampleImage.jpg')} key={index} />
+                                </div>
+                                ))}
+                            </Carousel>
                         </div>
                     </div>
                 
