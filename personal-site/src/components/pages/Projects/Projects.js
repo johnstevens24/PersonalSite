@@ -24,7 +24,7 @@ const Projects = () => {
         {name:"SCI Research", 
         type:"Research Paper", 
         techStack:"None", 
-        description:"investigation into...", 
+        description:"For a class on ubiquitous computer and accessibility, I conducted a small study and wrote a research paper on the best way for people who have suffered from spinal cord injuries to track their food intake.", 
         githubLink:""}
 
     ]
@@ -69,21 +69,23 @@ const Projects = () => {
                             <a href={project.githubLink}>GitHub Link</a>
                         </div>
                         <div className="imageDiv">
-                            {/* <img alt="a flower... for now" src={require('../../../assets/images/sampleImage.jpg')}></img> */}
-                            <Carousel  showArrows={true}
+                            <img alt="a flower... for now" src={require('../../../assets/images/sampleImage.jpg')}></img>
+                            {/* <Carousel  showArrows={true}
                                     showThumbs={false}
                                     showStatus={false}
                                     infiniteLoop={false}
                                     useKeyboardArrows={true}
                                     autoPlay={false}
                                     stopOnHover={true}
+                                    centerMode
+                                    centerSlidePercentage={1}
                                     >
-                                {images.map((URL, index) => (
-                                <div className="slide">
-                                    <img alt="sample_file" src={require('../../../assets/images/sampleImage.jpg')} key={index} />
-                                </div>
-                                ))}
-                            </Carousel>
+                                
+                                
+                                <img className="slide" alt="sample_file" src={require('../../../assets/images/sampleImage.jpg')}/>
+                                <img className="slide" alt="sample_file" src={require('../../../assets/images/sampleImage.jpg')}/>
+                                
+                            </Carousel> */}
                         </div>
                     </div>
                 

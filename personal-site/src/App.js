@@ -10,15 +10,15 @@ import Personal from "./components/pages/Personal/Personal.js"
 function App() {
   return (
   <>
-  <BrowserRouter>
-    <Navbar/>
-    <Routes>
-      <Route path="/" element={<text>hi</text>}/>
-      <Route path="/home" element={<Home/>}/>
-      <Route path="/projects" element={<Projects/>}/>
-      <Route path="/personal" element={<Personal/>}/>
-    </Routes>
-  </BrowserRouter>
+    <BrowserRouter>
+      <Navbar/>
+      <Routes>
+        <Route path="/" element={<text>hi</text>}/>
+        <Route path="/home" element={<Home/>}/>
+        <Route path="/projects" element={<Projects/>}/>
+        <Route path="/personal" element={<Personal/>}/>
+      </Routes>
+    </BrowserRouter>
   </>
   );
 }

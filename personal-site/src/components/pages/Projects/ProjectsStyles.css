@@ -105,3 +105,28 @@ img {
     opacity: 0;
     transition: all 1s;
 }
+
+
+
+
+/* carousel */
+
+
+/* .projectDiv {
+    margin: 20px 0;
+}
+
+.infoDiv {
+    margin-bottom: 20px;
+} */
+
+/* .imageDiv {
+    width: 100%;
+    max-width: 600px;
+    margin: auto;
+} */
+
+.slide {
+    height: 350px;
+    width: auto;
+}
