@@ -1,6 +1,6 @@
 import {React, useEffect } from "react";
 import { Carousel } from 'react-responsive-carousel';
-
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 import './ProjectsStyles.css'
 
 const Projects = () => {
@@ -59,6 +59,7 @@ const Projects = () => {
         <>
         <div style={{display:'flex', flexDirection:"column", alignItems:'center', justifyContent:'flex-start'}}>
             <div style={{maxWidth:1240}}>
+            
                 {projects.map((project) => (
                     <div className="projectDiv">
                         <div className="infoDiv">
@@ -69,23 +70,14 @@ const Projects = () => {
                             <a href={project.githubLink}>GitHub Link</a>
                         </div>
                         <div className="imageDiv">
-                            <img alt="a flower... for now" src={require('../../../assets/images/sampleImage.jpg')}></img>
-                            {/* <Carousel  showArrows={true}
-                                    showThumbs={false}
-                                    showStatus={false}
-                                    infiniteLoop={false}
-                                    useKeyboardArrows={true}
-                                    autoPlay={false}
-                                    stopOnHover={true}
-                                    centerMode
-                                    centerSlidePercentage={1}
-                                    >
+                            {/* <img alt="a flower... for now" src={require('../../../assets/images/sampleImage.jpg')}></img> */}
+                            <Carousel  showArrows={false} showStatus={false} showThumbs={false} showIndicators={false} autoPlay={true} infiniteLoop={true} interval={5000}>
                                 
                                 
                                 <img className="slide" alt="sample_file" src={require('../../../assets/images/sampleImage.jpg')}/>
                                 <img className="slide" alt="sample_file" src={require('../../../assets/images/sampleImage.jpg')}/>
                                 
-                            </Carousel> */}
+                            </Carousel>
                         </div>
                     </div>
                 
