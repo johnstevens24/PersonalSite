@@ -4,7 +4,9 @@ import './AboutStyles.css'
 
 const About = () => {
     const elementRef = useRef(null)
-    const [helpOffset, setHelpOffset] = useState(20)
+    const [titleOffsetInitial, setTitleOffsetInitial] = useState(20)
+    const [titleOffset, setTitleOffset] = useState(titleOffsetInitial)
+    const [rectPercentVisible, setRectPercentVisible] = useState(0)
 
     useEffect(() => {
         window.addEventListener('scroll', checkVisibility);    
@@ -17,58 +19,83 @@ const About = () => {
         //once element has been assinged, start monitoring it
         if (elementRef.current) {
             const rect = elementRef.current.getBoundingClientRect();
-            console.log(rect.bottom)
             if(rect.top < 0 && rect.bottom > 120)
             {
-                setHelpOffset(-rect.top+20)
-                // console.log("help offset: " + -rect.top)
+                setTitleOffset(-rect.top+titleOffsetInitial)
             }
-    }
+            let percent = (-rect.top/rect.height)*100
+            //I added a multiplier because I wanted the bar to go faster across the screen
+            let multiplier = 1.25
+            if(percent >= 0 && percent <= (100/multiplier))
+            {
+                setRectPercentVisible(percent*multiplier)
+                
+            }
+            //this gets rid of a small maybe one or two pixel wide part that would show when its supposed to be set to zero
+            if(percent < 0)
+                setRectPercentVisible(0)
+            if(percent*multiplier > 100)
+                setRectPercentVisible(100)
+        }
     };
 
-    const vehicleList = [
-        {name:"Acura TL", year:"2006", transmission:"Manual", src:"", bio:"Going to miss this thing. Found it in a junk yard a few years later..."},
-        {name:"Lexus IS300", year:"2002", transmission:"Manual", src:"", bio:"LOREM IPSOM A BUNCH OF OTHER BULLSHIT It had a poorly done 1JZ-GTE swap and a blown second gear, but to 17 year old me, it was the coolest thing ever."},
-        {name:"Nissan 240sx", year:"1996", transmission:"Manual", src:"", bio:"Shitbox"},
-        {name:"BMW 335i", year:"2007", transmission:"Automatic", src:"", bio:"Loved it. Miss this thing"},
-        {name:"BMW 335i", year:"2007", transmission:"Manual", src:"", bio:"Money pit"},
-        {name:"Acura RL", year:"2005", transmission:"Automatic", src:"", bio:"Things a champ"},
-        {name:"Yamaha FZ6", year:"2009", transmission:"Manual", src:"", bio:"Great first bike"},
-        {name:"BMW 535i", year:"2010", transmission:"Automatic", src:"", bio:"Meh"},
-        {name:"Yamaha FZ09", year:"2014", transmission:"Automatic", src:"", bio:"Things a ripper"},
-    ]
+
+    const languages = [
+        {name:"React", icon:""}, 
+        {name:"React Native", icon:""}, 
+        {name:"Github", icon:""}, 
+        {name:"Gitlab", icon:""}, 
+        {name:"SQL", icon:""},
+        {name:"sqlite", icon:""},
+        {name:"Java", icon:""},
+        {name:"C", icon:""},
+        {name:"C++", icon:""},
+        {name:"C#", icon:""},
+        {name:"Python", icon:""},
+        {name:"HTML", icon:""},
+        {name:"JavaScript", icon:""},
+        {name:"JSON", icon:""},
+        {name:"XML", icon:""},
+        {name:"Restful APIs", icon:""},
+        ]
 
     return(
         <>
         <div style={{display:'flex', flexDirection:"column", alignItems:'center', justifyContent:'flex-start'}}>
             <div style={{maxWidth:1240}}>
-                <div style={{height:400, backgroundColor:'red'}}/>
-
-                
-                <div style={{display:'flex', flexDirection:'row', justifyContent:'flex-start'}}>
-                    <div ref={elementRef} style={{height:1500, backgroundColor:'blue', display:'flex', flexDirection:'column'}}>
-                        <h2 style={{position:'relative', top:`${helpOffset}px`, left:0}}>Previous/current vehicles</h2>
+                <div className="bioContainer">
+                    <img src={require('../../../assets/images/Me/IMG_3250.PNG')}></img>
+                    <div className="bioDiv">
+                        <h2>John Stevens</h2>
+                        <p>B.S. Software Development University of Utah 2024</p>
                     </div>
-                    <div>
-                        {vehicleList.map((vehicle) => (
-                        <div className="vehicleDiv">
-                            {/* vehicle info */}
-                            <div className="vehicleInfo">
-                                <h3>{vehicle.name}</h3>
-                                <p>{vehicle.year}</p>
-                                <p>{vehicle.transmission}</p>
-                                <p>{vehicle.bio}</p>
-                            </div>
-                            {/* vehicle image */}
-                            <div className="vehicleImage">
-                                <p>*IMAGE*</p>
-                            </div>
-                        </div>
-                        ))}
-                    </div>
-
                 </div>
-               
+
+
+                <div style={{display:'flex', flexDirection:'column', backgroundColor:'white'}}>
+                    {/* languages / technologies */}
+                    <div style={{display:'flex', flexDirection:'row', justifyContent:'flex-start'}}>
+                        <div ref={elementRef} style={{height:'auto', display:'flex', flexDirection:'column', paddingLeft:20, paddingRight:20}}>
+                            <h2 style={{position:'relative', top:`${titleOffset}px`, left:0}}>Familiar Languages & Technologies</h2>
+                        </div>
+                        <div className="languageDiv">
+                            {/* this div allows the h2 above some padding along the as users scroll, but also aligns it properly with the first language*/}
+                            <div style={{height:`${titleOffsetInitial}`}}></div>
+                            {languages.map((language) => (
+                                <h2>{language.name}</h2>
+                            ))}
+                        </div>
+                    </div>
+                    <div style={{height:80, width:'auto', display:'flex', flexDirection:'row', justifyContent:'flex-end', alignItems:'center'}}>
+                        <div style={{height:'100%', width:`${rectPercentVisible}%`, backgroundColor:'red'}}></div>
+                    </div>
+                </div>
+
+
+
+
+
+               <div style={{height:4000, backgroundColor:'red', width:100}}></div>
             </div>
         </div>
         </>

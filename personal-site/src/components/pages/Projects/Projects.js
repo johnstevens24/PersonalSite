@@ -30,7 +30,7 @@ const Projects = () => {
     ]
 
     const tellMeImages = [require('../../../assets/images/TellMeScreenshots/IMG_4305.PNG'), require('../../../assets/images/TellMeScreenshots/IMG_4306.PNG'), require('../../../assets/images/TellMeScreenshots/IMG_4310.PNG'), require('../../../assets/images/TellMeScreenshots/IMG_4311.PNG')]
-    // const images = [require('../../../assets/images/TellMeScreenshots/IMG_4305.PNG')]
+    const tiltImages = [require('../../../assets/images/TiltScreenshots/IMG_4563.PNG'), require('../../../assets/images/TiltScreenshots/IMG_4564.PNG')]
 
 
 
@@ -73,8 +73,10 @@ const Projects = () => {
                         <div className="imageDiv">
                             {/* <img alt="a flower... for now" src={require('../../../assets/images/sampleImage.jpg')}></img> */}
                             <Carousel  showArrows={false} showStatus={false} showThumbs={false} showIndicators={false} autoPlay={true} infiniteLoop={true} interval={5000}>
-                                {project.name === 'TellMe' ? tellMeImages.map((image) => (<img className="slide" alt="sample_file" src={image}/>)): <></>}
-                                                                
+                                {project.name === 'TILT' ? tiltImages.map((image) => (<img className="slide" alt="sample_file" src={image}/>)) : <></>}
+                                {project.name === 'TellMe' ? tellMeImages.map((image) => (<img className="slide" alt="sample_file" src={image}/>)) : <></>}
+                                {project.name === 'SLC Air Quality' ? <img alt="a flower... for now" src={require('../../../assets/images/sampleImage.jpg')}></img> : <></>}
+                                {project.name === 'SCI Research' ? <img alt="a flower... for now" src={require('../../../assets/images/sampleImage.jpg')}></img> : <></>}                                  
                             </Carousel>
                         </div>
                     </div>
