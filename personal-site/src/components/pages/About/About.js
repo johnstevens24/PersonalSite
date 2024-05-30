@@ -41,22 +41,22 @@ const About = () => {
 
 
     const languages = [
-        {name:"React", icon:""}, 
-        {name:"React Native", icon:""}, 
-        {name:"Github", icon:""}, 
-        {name:"Gitlab", icon:""}, 
-        {name:"SQL", icon:""},
-        {name:"sqlite", icon:""},
-        {name:"Java", icon:""},
-        {name:"C", icon:""},
-        {name:"C++", icon:""},
-        {name:"C#", icon:""},
-        {name:"Python", icon:""},
-        {name:"HTML", icon:""},
-        {name:"JavaScript", icon:""},
-        {name:"JSON", icon:""},
-        {name:"XML", icon:""},
-        {name:"Restful APIs", icon:""},
+        {name:"React", icon:"https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg"}, 
+        // {name:"React Native", icon:""}, 
+        {name:"Github", icon:"https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg"}, 
+        {name:"Gitlab", icon:"https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/gitlab/gitlab-original.svg"}, 
+        {name:"SQL", icon:"https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azuresqldatabase/azuresqldatabase-original.svg"},
+        {name:"sqlite", icon:"https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sqlite/sqlite-original.svg"},
+        {name:"Java", icon:"https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg"},
+        {name:"C", icon:"https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/c/c-original.svg"},
+        {name:"C++", icon:"https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg"},
+        {name:"C#", icon:"https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/csharp/csharp-original.svg"},
+        {name:"Python", icon:"https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg"},
+        {name:"HTML5", icon:"https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg"},
+        {name:"JavaScript", icon:"https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg"},
+        {name:"JSON", icon:"https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/json/json-original.svg"},
+        {name:"XML", icon:"https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/xml/xml-original.svg"},
+        {name:"Django", icon:"https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/djangorest/djangorest-original.svg"},
         ]
 
     return(
@@ -66,28 +66,41 @@ const About = () => {
                 <div className="bioContainer">
                     <img src={require('../../../assets/images/Me/IMG_3250.PNG')}></img>
                     <div className="bioDiv">
-                        <h2>John Stevens</h2>
+                        <h1>John Stevens</h1>
                         <p>B.S. Software Development University of Utah 2024</p>
                     </div>
                 </div>
 
 
-                <div style={{display:'flex', flexDirection:'column', backgroundColor:'white'}}>
-                    {/* languages / technologies */}
-                    <div style={{display:'flex', flexDirection:'row', justifyContent:'flex-start'}}>
+                <div className="languageContainerOuter">
+                    {/* languages / technologies container*/}
+                    <div className="languageContainerInner" style={{display:'flex', flexDirection:'row', justifyContent:'flex-start', width:'100%'}}>
+                        
+                        {/* div for the moving text on the left */}
                         <div ref={elementRef} style={{height:'auto', display:'flex', flexDirection:'column', paddingLeft:20, paddingRight:20}}>
                             <h2 style={{position:'relative', top:`${titleOffset}px`, left:0}}>Familiar Languages & Technologies</h2>
                         </div>
+
+                        {/* div for the list of languages on the right */}
                         <div className="languageDiv">
+
                             {/* this div allows the h2 above some padding along the as users scroll, but also aligns it properly with the first language*/}
                             <div style={{height:`${titleOffsetInitial}`}}></div>
                             {languages.map((language) => (
-                                <h2>{language.name}</h2>
+                                <div style={{display:'flex', flexDirection:'row', width:'100%', justifyContent:'space-between'}}>
+                                    <h2>{language.name}</h2>
+                                    <div style={{flexDirection:'row', paddingRight:5}}>
+                                        <img src={language.icon} style={{height:40}}></img>
+                                    </div>
+                                </div>
                             ))}
                         </div>
+
                     </div>
-                    <div style={{height:80, width:'auto', display:'flex', flexDirection:'row', justifyContent:'flex-end', alignItems:'center'}}>
-                        <div style={{height:'100%', width:`${rectPercentVisible}%`, backgroundColor:'red'}}></div>
+
+                    {/* div for the moving colored bar on the bottom */}
+                    <div style={{height:40, width:'auto', display:'flex', flexDirection:'row', justifyContent:'flex-end', alignItems:'center'}}>
+                        <div style={{height:'100%', width:`${rectPercentVisible}%`, backgroundColor:'#007AFF'}}></div>
                     </div>
                 </div>
 
@@ -95,7 +108,7 @@ const About = () => {
 
 
 
-               <div style={{height:4000, backgroundColor:'red', width:100}}></div>
+               <div style={{height:4000, backgroundColor:'#007AFF', width:40}}></div>
             </div>
         </div>
         </>

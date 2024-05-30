@@ -68,7 +68,7 @@ const Projects = () => {
                             <p><b>Type:</b> {project.type}</p>
                             <p><b>Tech Stack:</b> {project.techStack}</p>
                             <p>{project.description}</p>
-                            <a href={project.githubLink}>GitHub Link</a>
+                            <a href={project.githubLink} target='_blank'>GitHub Link</a>
                         </div>
                         <div className="imageDiv">
                             {/* <img alt="a flower... for now" src={require('../../../assets/images/sampleImage.jpg')}></img> */}

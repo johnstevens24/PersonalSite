@@ -72,6 +72,12 @@ div > a {
     margin-top: 2rem;
 }
 
+div > a:hover {
+    border:1px solid var(--primary-blue);
+    background-color: white;
+    color:var(--primary-blue);
+}
+
 img {
     width:100%;
     height:90%;

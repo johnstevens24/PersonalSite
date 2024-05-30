@@ -1,8 +1,20 @@
 @import url('../../../index.css');
 
 
+@keyframes slideInFromLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-100%);
+        /* filter:blur(5px) */
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
 .bioContainer {
-    margin:2rem;
+    /* margin:2rem; */
     display: flex;
     flex-direction: row;
     width:auto;
@@ -10,6 +22,7 @@
 
 .bioContainer > img {
     width: 60%;
+    z-index: 1;
 }
 
 .bioDiv {
@@ -17,15 +30,30 @@
     display: flex;
     flex-direction: column;
     padding-left: 1rem;
+    animation: slideInFromLeft 1s ease-out forwards;
+}
+
+.languageContainerOuter {
+    display:'flex'; 
+    direction:'column'; 
+    width:'100%';
+}
+
+.languageContainerInner {
+    display:'flex'; 
+    flex-direction:'row'; 
+    justify-content:'flex-start';
+    width:'100%';
 }
 
 .languageDiv {
     display: flex;
     flex-direction: column;
-    width:auto;
+    width:50%;
 }
 
-.languageDiv > h2 {
+.languageDiv h2 {
     padding: 5px;
-    margin-bottom: 1rem;
+    margin-bottom: .5rem;
+    color: var(--primary-dark)
 }
