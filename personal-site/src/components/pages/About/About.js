@@ -47,6 +47,7 @@ const About = () => {
         if (secondDivRef.current) {
             const rect = secondDivRef.current.getBoundingClientRect();
             let percent = ((-(rect.top-220))/secondDivHeight)*100
+
             if(percent <= 0)
                 setSecondDivPercentVisible(0)
             else
@@ -78,7 +79,6 @@ const About = () => {
         ]
 
     return(
-        <>
         <div style={{display:'flex', flexDirection:"column", alignItems:'center', justifyContent:'flex-start'}}>
             <div style={{maxWidth:1240}}>
                 <div className="bioContainer">
@@ -125,13 +125,17 @@ const About = () => {
 
 
                 {/* Hobbies div */}
-               <div ref={secondDivRef} style={{height:`${secondDivHeight}px`, width:'auto', backgroundColor:'grey'}}>
+               <div ref={secondDivRef} style={{height:`${secondDivHeight}px`, width:'auto', display:'flex', flexDirection:'row'}}>
                     <div style={{width:40, height:`${secondDivPercentVisible}%`, backgroundColor:'#007AFF'}}></div>
+                    <div style={{paddingLeft:'1rem', opacity:`${secondDivPercentVisible/100}`,flex:1, background:'linear-gradient(to right, rgba(1, 214, 214, 1), rgba(214, 214, 214, 0))'}}>
+                        <p style={{fontSize:100}}><b style={{color:'white'}}>HOBBIES</b></p>
+                    </div>
                 </div>
                <div style={{height:3000}}></div>
             </div>
+        
+            <p style={{color:'white'}}>if you found this, hi</p>
         </div>
-        </>
     )
 }
 

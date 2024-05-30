@@ -61,8 +61,8 @@ const Projects = () => {
         <div style={{display:'flex', flexDirection:"column", alignItems:'center', justifyContent:'flex-start'}}>
             <div style={{maxWidth:1240}}>
             
-                {projects.map((project) => (
-                    <div className="projectDiv">
+                {projects.map((project, index) => (
+                    <div key={index} className="projectDiv">
                         <div className="infoDiv">
                             <h2 className={project.name}>{project.name}</h2>
                             <p><b>Type:</b> {project.type}</p>
@@ -73,8 +73,8 @@ const Projects = () => {
                         <div className="imageDiv">
                             {/* <img alt="a flower... for now" src={require('../../../assets/images/sampleImage.jpg')}></img> */}
                             <Carousel  showArrows={false} showStatus={false} showThumbs={false} showIndicators={false} autoPlay={true} infiniteLoop={true} interval={5000}>
-                                {project.name === 'TILT' ? tiltImages.map((image) => (<img className="slide" alt="sample_file" src={image}/>)) : <></>}
-                                {project.name === 'TellMe' ? tellMeImages.map((image) => (<img className="slide" alt="sample_file" src={image}/>)) : <></>}
+                                {project.name === 'TILT' ? tiltImages.map((image, imageIndex) => (<img key={imageIndex} className="slide" alt="sample_file" src={image}/>)) : <></>}
+                                {project.name === 'TellMe' ? tellMeImages.map((image, imageIndex) => (<img key={imageIndex} className="slide" alt="sample_file" src={image}/>)) : <></>}
                                 {project.name === 'SLC Air Quality' ? <img alt="a flower... for now" src={require('../../../assets/images/sampleImage.jpg')}></img> : <></>}
                                 {project.name === 'SCI Research' ? <img alt="a flower... for now" src={require('../../../assets/images/sampleImage.jpg')}></img> : <></>}                                  
                             </Carousel>
@@ -83,6 +83,8 @@ const Projects = () => {
                 
                 ))}
             </div>
+
+
         </div>
         </>
     )
