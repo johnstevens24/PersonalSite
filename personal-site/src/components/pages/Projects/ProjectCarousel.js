@@ -7,7 +7,7 @@ const ProjectCarousel = ({ project }) => {
     
     const tellMeImages = [require('../../../assets/images/TellMeScreenshots/IMG_4305.PNG'), require('../../../assets/images/TellMeScreenshots/IMG_4306.PNG'), require('../../../assets/images/TellMeScreenshots/IMG_4310.PNG'), require('../../../assets/images/TellMeScreenshots/IMG_4311.PNG')]
     const tiltImages = [require('../../../assets/images/TiltScreenshots/IMG_4563.PNG'), require('../../../assets/images/TiltScreenshots/IMG_4564.PNG')]
-    
+    const airImages = [require('../../../assets/images/SLCAirQualityImages/Inversion.png'), require('../../../assets/images/SLCAirQualityImages/InversionMedianHHValue.png'), require('../../../assets/images/SLCAirQualityImages/WildfireSmokeImage.png')]
     let images = [];
   
     switch (project.name) {
@@ -18,6 +18,8 @@ const ProjectCarousel = ({ project }) => {
         images = tellMeImages;
         break;
       case 'SLC Air Quality':
+        images = airImages;
+        break;
       case 'SCI Research':
         images = [require('../../../assets/images/sampleImage.jpg')];
         break;
