@@ -68,6 +68,7 @@ const Projects = () => {
                             <p>{project.description}</p>
                             <a href={project.githubLink} target='_blank'>GitHub Link</a>
                         </div>
+                        <div style={{width:'4%'}}/>
                         <div className="imageDiv">
                             <ProjectCarousel project={project} />
                         </div>

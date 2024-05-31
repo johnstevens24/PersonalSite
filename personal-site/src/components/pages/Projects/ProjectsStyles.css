@@ -45,10 +45,20 @@
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    width: 50%;
     height: 100%;
-    background-color: aqua;
 }
+
+img {
+    /* width:100%;
+    height:90%; */
+    cursor:none;
+    object-fit:contain;
+    height: 400px;
+    width: auto;
+}
+
+
+
 
 
 b {
@@ -77,13 +87,6 @@ div > a:hover {
     background-color: white;
     color:var(--primary-blue);
 }
-
-img {
-    width:100%;
-    height:90%;
-    object-fit:contain;
-}
-
 
 
 
@@ -133,7 +136,3 @@ img {
     margin: auto;
 } */
 
-.slide {
-    height: 400px;
-    width: auto;
-}
