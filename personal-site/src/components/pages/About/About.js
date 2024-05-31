@@ -14,6 +14,8 @@ const About = () => {
 
     const thirdDivRef = useRef(null)
     const [thirdDivPercentVisible, setThirdDivPercentVisible] = useState(0)
+    const videoRef = useRef(null)
+    const [playVideo, setPlayVideo] = useState(false)
 
     useEffect(() => {
         window.addEventListener('scroll', checkVisibility);    
@@ -77,12 +79,24 @@ const About = () => {
             else
             if(percent > 100)
                 setThirdDivPercentVisible(100)    
+
+            // videoRef.current.currentTime
+            
+
         }
     };
 
     function getVideoWidth() {
+        // if( videoRef.current !== null && thirdDivPercentVisible/9 < 9 && thirdDivPercentVisible/9 >= 0)
+        //     videoRef.current.currentTime=thirdDivPercentVisible/9 
+            
         if(thirdDivPercentVisible < 25)
-            return 50 + thirdDivPercentVisible*2;
+            {
+                if(videoRef.current !== null)
+                    videoRef.current.pause()
+                return 50 + thirdDivPercentVisible*2;
+            }
+        videoRef.current.play()   
         return 100;
     }
     
@@ -164,9 +178,12 @@ const About = () => {
 
                 {/* Motorcycle Video div */}
                 <div ref={thirdDivRef} className="motorcycleDiv">
-                    <div style={{width:'5px', height:`${thirdDivPercentVisible+3}%`}}>{/* spacer div */}</div>
-                    <div style={{width:`${getVideoWidth()}%`, height:200, backgroundColor:'red', display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'center'}}>
-                        {thirdDivPercentVisible > 40 ? <h2 style={{color:'white'}}>MOTORCYCLING</h2> : <></>}
+                    <div style={{width:'5px', height:`${thirdDivPercentVisible+2}%`}}>{/* spacer div */}</div>
+                    <div style={{width:`${getVideoWidth()}%`, height:200, backgroundColor:'red', display:'flex', flexDirection:'column', justifyContent:'flex-start', alignItems:'center'}}>
+                        {/* {thirdDivPercentVisible > 40 ? <h2 style={{color:'white'}}>MOTORCYCLING</h2> : <></>} */}
+                        <video ref={videoRef} muted={true} loop={true} controls={false} style={{width:'100%'}}>
+                            <source src={require('../../../assets/videos/motorcycle.mp4')} type="video/mp4"/>
+                        </video>
                     </div>
                 </div>
                 
