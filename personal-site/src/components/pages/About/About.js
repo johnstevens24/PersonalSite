@@ -23,25 +23,26 @@ const About = () => {
         
         if (firstDivRef.current) {
             const rect = firstDivRef.current.getBoundingClientRect();
+
             if(rect.top < 0 && rect.bottom > 120)
             {
                 setTitleOffset(-rect.top+titleOffsetInitial)
             }
+            
+
+
             let percent = (-rect.top/rect.height)*100
             //I added a multiplier because I wanted the bar to go faster across the screen
             let multiplier = 1.25
+
             if(percent >= 0 && percent <= (100/multiplier))
-            {
                 setFirstDivPercentVisible(percent*multiplier)
-            }
-            //this gets rid of a small maybe one or two pixel wide part that would show when its supposed to be set to zero
+            else
             if(percent < 0)
                 setFirstDivPercentVisible(0)
+            else
             if(percent*multiplier > 100)
-            {
-                setFirstDivPercentVisible(100)
-            }
-                
+                setFirstDivPercentVisible(100)    
         }
 
         if (secondDivRef.current) {
@@ -81,11 +82,16 @@ const About = () => {
     return(
         <div style={{display:'flex', flexDirection:"column", alignItems:'center', justifyContent:'flex-start'}}>
             <div style={{maxWidth:1240}}>
+                
                 <div className="bioContainer">
-                    <img src={require('../../../assets/images/Me/IMG_3250.PNG')}></img>
+                    <div className="imageDiv">
+                        <img alt="Me" src={require('../../../assets/images/Me/IMG_3250.PNG')}/>
+                    </div>
+                    
                     <div className="bioDiv">
                         <h1>John Stevens</h1>
                         <p>B.S. Software Development University of Utah 2024</p>
+                        <p></p>
                     </div>
                 </div>
 
@@ -115,26 +121,23 @@ const About = () => {
                         </div>
 
                     </div>
-
-                    {/* div for the moving colored bar on the bottom */}
-                    <div style={{height:40, width:'auto', display:'flex', flexDirection:'row', justifyContent:'flex-end', alignItems:'center'}}>
-                        <div style={{height:'100%', width:`${firstDivPercentVisible}%`, backgroundColor:'#007AFF'}}></div>
-                    </div>
                 </div>
-                
+
+                {/* div for the moving colored bar on the bottom */}
+                <div style={{marginTop:40,height:40, width:'auto', display:'flex', flexDirection:'row', justifyContent:'flex-end', alignItems:'center'}}>
+                    <div style={{height:'100%', width:`${firstDivPercentVisible}%`, backgroundColor:'#007AFF'}}></div>
+                </div>
 
 
-                {/* Hobbies div */}
+                {/* Hobbies Banner div */}
                <div ref={secondDivRef} style={{height:`${secondDivHeight}px`, width:'auto', display:'flex', flexDirection:'row'}}>
                     <div style={{width:40, height:`${secondDivPercentVisible}%`, backgroundColor:'#007AFF'}}></div>
                     <div style={{paddingLeft:'1rem', opacity:`${secondDivPercentVisible/100}`,flex:1, background:'linear-gradient(to right, rgba(1, 214, 214, 1), rgba(214, 214, 214, 0))'}}>
-                        <p style={{fontSize:100}}><b style={{color:'white'}}>HOBBIES</b></p>
+                        <p className="hobbies"style={{fontSize:100}}><b style={{color:'white'}}>HOBBIES</b></p>
                     </div>
                 </div>
-               <div style={{height:3000}}></div>
+                <div style={{height:3000}}></div>
             </div>
-        
-            <p style={{color:'white'}}>if you found this, hi</p>
         </div>
     )
 }

@@ -14,15 +14,23 @@
 }
 
 .bioContainer {
-    /* margin:2rem; */
+    margin:2rem;
     display: flex;
     flex-direction: row;
     width:auto;
 }
 
-.bioContainer > img {
+.imageDiv {
     width: 60%;
     z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.imageDiv > img {
+    
 }
 
 .bioDiv {
@@ -56,4 +64,8 @@
     padding: 5px;
     margin-bottom: .5rem;
     color: var(--primary-dark)
+}
+
+.hobbies:hover {
+    cursor:default;
 }
