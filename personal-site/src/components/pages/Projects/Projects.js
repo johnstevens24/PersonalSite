@@ -2,6 +2,7 @@ import {React, useEffect } from "react";
 import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import './ProjectsStyles.css'
+import ProjectCarousel from './ProjectCarousel.js'
 
 const Projects = () => {
 
@@ -28,9 +29,6 @@ const Projects = () => {
         githubLink:""}
 
     ]
-
-    const tellMeImages = [require('../../../assets/images/TellMeScreenshots/IMG_4305.PNG'), require('../../../assets/images/TellMeScreenshots/IMG_4306.PNG'), require('../../../assets/images/TellMeScreenshots/IMG_4310.PNG'), require('../../../assets/images/TellMeScreenshots/IMG_4311.PNG')]
-    const tiltImages = [require('../../../assets/images/TiltScreenshots/IMG_4563.PNG'), require('../../../assets/images/TiltScreenshots/IMG_4564.PNG')]
 
 
 
@@ -71,13 +69,7 @@ const Projects = () => {
                             <a href={project.githubLink} target='_blank'>GitHub Link</a>
                         </div>
                         <div className="imageDiv">
-                            {/* <img alt="a flower... for now" src={require('../../../assets/images/sampleImage.jpg')}></img> */}
-                            <Carousel  showArrows={false} showStatus={false} showThumbs={false} showIndicators={false} autoPlay={true} infiniteLoop={true} interval={5000}>
-                                {project.name === 'TILT' ? tiltImages.map((image, imageIndex) => (<img key={imageIndex} className="slide" alt="sample_file" src={image}/>)) : <></>}
-                                {project.name === 'TellMe' ? tellMeImages.map((image, imageIndex) => (<img key={imageIndex} className="slide" alt="sample_file" src={image}/>)) : <></>}
-                                {project.name === 'SLC Air Quality' ? <img alt="a flower... for now" src={require('../../../assets/images/sampleImage.jpg')}></img> : <></>}
-                                {project.name === 'SCI Research' ? <img alt="a flower... for now" src={require('../../../assets/images/sampleImage.jpg')}></img> : <></>}                                  
-                            </Carousel>
+                            <ProjectCarousel project={project} />
                         </div>
                     </div>
                 
