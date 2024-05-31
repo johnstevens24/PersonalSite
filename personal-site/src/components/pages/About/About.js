@@ -12,6 +12,9 @@ const About = () => {
     const [secondDivHeight, setSecondDivHeight] = useState(150)
     const [secondDivPercentVisible, setSecondDivPercentVisible] = useState(0)
 
+    const thirdDivRef = useRef(null)
+    const [thirdDivPercentVisible, setThirdDivPercentVisible] = useState(0)
+
     useEffect(() => {
         window.addEventListener('scroll', checkVisibility);    
         return () => {
@@ -58,9 +61,31 @@ const About = () => {
             if(percent > 100)
                 setSecondDivPercentVisible(100)
         }
+
+        if (thirdDivRef.current) {
+            const rect = thirdDivRef.current.getBoundingClientRect();
+
+            let percent = (-rect.top/rect.height)*100
+            
+            if(percent >= 0 && percent <= 100)
+            {
+                    setThirdDivPercentVisible(percent)
+            }    
+            else
+            if(percent < 0)
+                setThirdDivPercentVisible(0)
+            else
+            if(percent > 100)
+                setThirdDivPercentVisible(100)    
+        }
     };
 
-
+    function getVideoWidth() {
+        if(thirdDivPercentVisible < 25)
+            return 50 + thirdDivPercentVisible*2;
+        return 100;
+    }
+    
     const languages = [
         {name:"JavaScript", icon:"https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg"},
         {name:"Python", icon:"https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg"},
@@ -130,12 +155,22 @@ const About = () => {
 
 
                 {/* Hobbies Banner div */}
-               <div ref={secondDivRef} style={{height:`${secondDivHeight}px`, width:'auto', display:'flex', flexDirection:'row'}}>
+                <div ref={secondDivRef} style={{height:`${secondDivHeight}px`, width:'auto', display:'flex', flexDirection:'row'}}>
                     <div style={{width:40, height:`${secondDivPercentVisible}%`, backgroundColor:'#007AFF'}}></div>
-                    <div style={{paddingLeft:'1rem', opacity:`${secondDivPercentVisible/100}`,flex:1, background:'linear-gradient(to right, rgba(1, 214, 214, 1), rgba(214, 214, 214, 0))'}}>
+                    <div style={{paddingLeft:'1rem', opacity:`${secondDivPercentVisible/100}`, flex:1, background:'linear-gradient(to right, rgba(1, 214, 214, 1), rgba(214, 214, 214, 0))'}}>
                         <p className="hobbies"style={{fontSize:100}}><b style={{color:'white'}}>HOBBIES</b></p>
                     </div>
                 </div>
+
+                {/* Motorcycle Video div */}
+                <div ref={thirdDivRef} className="motorcycleDiv">
+                    <div style={{width:'5px', height:`${thirdDivPercentVisible+3}%`}}>{/* spacer div */}</div>
+                    <div style={{width:`${getVideoWidth()}%`, height:200, backgroundColor:'red', display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'center'}}>
+                        {thirdDivPercentVisible > 40 ? <h2 style={{color:'white'}}>MOTORCYCLING</h2> : <></>}
+                    </div>
+                </div>
+                
+                
                 <div style={{height:3000}}></div>
             </div>
         </div>
