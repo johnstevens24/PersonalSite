@@ -1,5 +1,7 @@
 import React, { useRef, useState, useEffect} from "react"
+import Slider from '@mui/material/Slider';
 import './AboutStyles.css'
+
 
 
 const About = () => {
@@ -16,6 +18,8 @@ const About = () => {
     const [thirdDivPercentVisible, setThirdDivPercentVisible] = useState(0)
     const videoRef = useRef(null)
     const [playVideo, setPlayVideo] = useState(false)
+
+    const [sliderPercentage, setSliderPercentage] = useState(0)
 
     useEffect(() => {
         window.addEventListener('scroll', checkVisibility);    
@@ -92,13 +96,14 @@ const About = () => {
             
         if(thirdDivPercentVisible < 25)
             {
-                if(videoRef.current !== null)
-                    videoRef.current.pause()
+                // if(videoRef.current !== null)
+                //     videoRef.current.pause()
                 return 50 + thirdDivPercentVisible*2;
             }
-        videoRef.current.play()   
+        // videoRef.current.play()   
         return 100;
     }
+
     
     const languages = [
         {name:"JavaScript", icon:"https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg"},
@@ -117,6 +122,7 @@ const About = () => {
         {name:"Gitlab", icon:"https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/gitlab/gitlab-original.svg"}, 
         {name:"Django", icon:"https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/djangorest/djangorest-original.svg"},
         ]
+    
 
     return(
         <div style={{display:'flex', flexDirection:"column", alignItems:'center', justifyContent:'flex-start'}}>
@@ -187,7 +193,24 @@ const About = () => {
                     </div>
                 </div>
                 
-                
+                <div style={{height:1000}}/>
+                <div>
+                    <h2>Photoshop</h2>
+                    <div className="photoShopImageDiv">
+                        {/* <div style={{width:`${sliderPercentage}`, height:'100%', overflow:'hidden', position:'relative', zIndex:1}}>
+                            <img src={require("../../../assets/images/photoshop/before.jpg")} style={{ position: 'absolute', width: '100%', height: 'auto', zIndex: 0 }}/>
+                        </div>
+                        <img src={require("../../../assets/images/photoshop/after.jpg")} style={{zIndex:0}}/> */}
+                        <div style={{position:'relative', top:0, width:`${sliderPercentage}%`, backgroundColor:"blue", height:300, overflow:'hidden', zIndex:1}}>
+                            <img style={{height:'100%'}} src={require("../../../assets/images/photoshop/before.jpg")}></img>
+                        </div>
+                        <div style={{position:'relative', width:`${sliderPercentage}%`, backgroundColor:"blue", height:300, zIndex:0}}>
+                            <img style={{height:'100%'}} src={require("../../../assets/images/photoshop/after.jpg")}></img>
+                        </div>
+                        <Slider onChange={(event, newValue) => { typeof newValue === 'number' ? setSliderPercentage(newValue) : setSliderPercentage(sliderPercentage)}} defaultValue={sliderPercentage} marks={[{value:0, label:'Before'}, {value:100, label:'After'}]}/>
+                        
+                    </div>
+                </div>
                 <div style={{height:3000}}></div>
             </div>
         </div>

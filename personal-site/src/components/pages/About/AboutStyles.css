@@ -80,3 +80,10 @@
     justify-content: flex-start;
     align-items: center;
 }
+
+
+.photoShopImageDiv {
+    width:'50%';
+    height:'auto';
+    background-color: aqua;
+}
