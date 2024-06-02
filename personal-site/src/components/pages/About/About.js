@@ -187,32 +187,34 @@ const About = () => {
                     <div style={{width:'5px', height:`${thirdDivPercentVisible+2}%`}}>{/* spacer div */}</div>
                     <div style={{width:`${getVideoWidth()}%`, height:200, backgroundColor:'red', display:'flex', flexDirection:'column', justifyContent:'flex-start', alignItems:'center'}}>
                         {/* {thirdDivPercentVisible > 40 ? <h2 style={{color:'white'}}>MOTORCYCLING</h2> : <></>} */}
-                        <video ref={videoRef} muted={true} loop={true} controls={false} style={{width:'100%'}}>
+                        {/* <video ref={videoRef} muted={true} loop={true} controls={false} style={{width:'100%'}}>
                             <source src={require('../../../assets/videos/motorcycle.mp4')} type="video/mp4"/>
-                        </video>
+                        </video> */}
                     </div>
                 </div>
                 
                 <div style={{height:1000}}/>
-                {/* <div className="photoshopContainer"> */}
-                    <h2>Photoshop</h2>
-                    <div className="photoShopImageDiv">
-                        {/* <div style={{width:`${sliderPercentage}`, height:'100%', overflow:'hidden', position:'relative', zIndex:1}}>
-                            <img src={require("../../../assets/images/photoshop/before.jpg")} style={{ position: 'absolute', width: '100%', height: 'auto', zIndex: 0 }}/>
-                        </div>
-                        <img src={require("../../../assets/images/photoshop/after.jpg")} style={{zIndex:0}}/> */}
-                        
-                        <div style={{position:'absolute', top:0, left:0, width:`${sliderPercentage}%`, backgroundColor:"blue", height:300, overflow:'hidden', zIndex:2}}>
-                            <img style={{height:'100%'}} src={require("../../../assets/images/photoshop/before.jpg")}></img>
-                        </div>
-                        <img src={require("../../../assets/images/photoshop/after.jpg")} style={{height:300, position:'absolute', top:0, left:0, zIndex:0}}></img>
-                        {/* <div style={{position:'relative', top:10, left:10, width:`${sliderPercentage}%`, backgroundColor:"blue", height:300, zIndex:0}}>
-                            <img style={{height:'100%'}} src={require("../../../assets/images/photoshop/after.jpg")}></img>
-                        </div> */}
-                        <Slider onChange={(event, newValue) => { typeof newValue === 'number' ? setSliderPercentage(newValue) : setSliderPercentage(sliderPercentage)}} defaultValue={sliderPercentage} marks={[{value:0, label:'Before'}, {value:100, label:'After'}]}/>
-                        
+
+                <div className="photoshopContainer">
+                    <div className="photoshopInfoDiv">
+                        <h2>Photoshop</h2>
+                        <p>some more stuff about photoshop</p>
                     </div>
-                {/* </div> */}
+                    
+                    <div style={{display:'flex', flexDirection:'column', width:'375px', height:'100%', justifyContent:'flex-start'}}>
+                        <div className="photoShopImageDiv">
+                            <div style={{position:'absolute', top:0, left:0, width:`${sliderPercentage}%`, height:500, overflow:'hidden', zIndex:2}}>
+                                <img style={{height:'100%'}} src={require("../../../assets/images/photoshop/after.jpg")}></img>
+                            </div>
+                            <img src={require("../../../assets/images/photoshop/before.jpg")} style={{height:500, position:'absolute', top:0, left:0, zIndex:0}}></img>
+                        </div>
+
+                        <div style={{height:'100%', display:'flex', flexDirection:'column', justifyContent:'flex-end'}}>
+                            <Slider onChange={(event, newValue) => { typeof newValue === 'number' ? setSliderPercentage(newValue) : setSliderPercentage(sliderPercentage)}} defaultValue={sliderPercentage} marks={[{value:0, label:'Before'}, {value:100, label:'After'}]}/>
+                        </div>
+                    </div>
+                </div>
+
                 <div style={{height:3000}}></div>
             </div>
         </div>
