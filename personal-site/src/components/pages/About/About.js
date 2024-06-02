@@ -5,6 +5,10 @@ import './AboutStyles.css'
 
 
 const About = () => {
+
+    const [width, setWidth] = useState(window.innerWidth)
+
+
     const firstDivRef = useRef(null)
     const [titleOffsetInitial, setTitleOffsetInitial] = useState(20)
     const [titleOffset, setTitleOffset] = useState(titleOffsetInitial)
@@ -123,6 +127,61 @@ const About = () => {
         {name:"Django", icon:"https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/djangorest/djangorest-original.svg"},
         ]
     
+    //small screen sizes
+    if(width < 940)
+        return(
+            <div className=".mobileContainer">
+
+                {/* bio and picture */}
+                <div className="mobileBioContainer">
+                    <img alt="Me" style={{width:'auto'}} src={require('../../../assets/images/Me/IMG_3250.PNG')}/>
+                    {width > 400 ? <h1>John Stevens</h1> : <p style={{fontSize:45, fontWeight:700}}>John Stevens</p>}
+                    <p>B.S. Software Development University of Utah 2024</p>
+                </div>
+                
+                {/* familiar languages and technologies */}
+                <div className="languageContainerOuter">
+                    {/* languages / technologies container*/}
+                    <div className="languageContainerInner" style={{display:'flex', flexDirection:'row', justifyContent:'flex-start', width:'100%'}}>
+                        
+                        {/* div for the moving text on the left */}
+                        <div ref={firstDivRef} style={{height:'auto', display:'flex', flexDirection:'column', paddingLeft:20}}>
+                            <h3 style={{position:'relative', top:`${titleOffset}px`, left:0}}>Familiar Languages & Technologies</h3>
+                        </div>
+
+                        {/* div for the list of languages on the right */}
+                        <div className="languageDiv">
+
+                            {/* this div allows the h2 above some padding along the as users scroll, but also aligns it properly with the first language*/}
+                            <div style={{height:`${titleOffsetInitial}`}}></div>
+                            {languages.map((language, index) => (
+                                <div key={index} style={{display:'flex', flexDirection:'row', width:'100%', justifyContent:'space-between'}}>
+                                    <h3>{language.name}</h3>
+                                    <div style={{flexDirection:'row', paddingRight:5}}>
+                                        <img src={language.icon} style={{height:40}}></img>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+
+                    </div>
+                </div>
+
+                {/* div for the moving colored bar on the bottom */}
+                <div style={{marginTop:40,height:40, width:'auto', display:'flex', flexDirection:'row', justifyContent:'flex-end', alignItems:'center'}}>
+                    <div style={{height:'100%', width:`${firstDivPercentVisible}%`, backgroundColor:'#007AFF'}}></div>
+                </div>
+
+                {/* Hobbies Banner div */}
+                <div ref={secondDivRef} style={{height:`auto`, width:'auto', display:'flex', flexDirection:'row'}}>
+                    <div style={{paddingLeft:'1rem', opacity:`${secondDivPercentVisible/100}`, flex:1, background:'linear-gradient(to right, rgba(1, 214, 214, 1), rgba(214, 214, 214, 0))'}}>
+                        <p className="hobbies"style={{fontSize:70}}><b style={{color:'white'}}>HOBBIES</b></p>
+                    </div>
+                </div>
+                
+                <div style={{height:10000}}></div>
+            </div>
+        )
 
     return(
         <div style={{display:'flex', flexDirection:"column", alignItems:'center', justifyContent:'flex-start'}}>
