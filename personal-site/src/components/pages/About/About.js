@@ -194,23 +194,25 @@ const About = () => {
                 </div>
                 
                 <div style={{height:1000}}/>
-                <div>
+                {/* <div className="photoshopContainer"> */}
                     <h2>Photoshop</h2>
                     <div className="photoShopImageDiv">
                         {/* <div style={{width:`${sliderPercentage}`, height:'100%', overflow:'hidden', position:'relative', zIndex:1}}>
                             <img src={require("../../../assets/images/photoshop/before.jpg")} style={{ position: 'absolute', width: '100%', height: 'auto', zIndex: 0 }}/>
                         </div>
                         <img src={require("../../../assets/images/photoshop/after.jpg")} style={{zIndex:0}}/> */}
-                        <div style={{position:'relative', top:0, width:`${sliderPercentage}%`, backgroundColor:"blue", height:300, overflow:'hidden', zIndex:1}}>
+                        
+                        <div style={{position:'absolute', top:0, left:0, width:`${sliderPercentage}%`, backgroundColor:"blue", height:300, overflow:'hidden', zIndex:2}}>
                             <img style={{height:'100%'}} src={require("../../../assets/images/photoshop/before.jpg")}></img>
                         </div>
-                        <div style={{position:'relative', width:`${sliderPercentage}%`, backgroundColor:"blue", height:300, zIndex:0}}>
+                        <img src={require("../../../assets/images/photoshop/after.jpg")} style={{height:300, position:'absolute', top:0, left:0, zIndex:0}}></img>
+                        {/* <div style={{position:'relative', top:10, left:10, width:`${sliderPercentage}%`, backgroundColor:"blue", height:300, zIndex:0}}>
                             <img style={{height:'100%'}} src={require("../../../assets/images/photoshop/after.jpg")}></img>
-                        </div>
+                        </div> */}
                         <Slider onChange={(event, newValue) => { typeof newValue === 'number' ? setSliderPercentage(newValue) : setSliderPercentage(sliderPercentage)}} defaultValue={sliderPercentage} marks={[{value:0, label:'Before'}, {value:100, label:'After'}]}/>
                         
                     </div>
-                </div>
+                {/* </div> */}
                 <div style={{height:3000}}></div>
             </div>
         </div>
