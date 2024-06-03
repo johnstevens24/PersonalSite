@@ -23,7 +23,7 @@ const About = () => {
     const videoRef = useRef(null)
     const [playVideo, setPlayVideo] = useState(false)
 
-    const [sliderPercentage, setSliderPercentage] = useState(0)
+    const [sliderPercentage, setSliderPercentage] = useState(50)
 
     useEffect(() => {
         window.addEventListener('scroll', checkVisibility);    
@@ -101,7 +101,7 @@ const About = () => {
                 videoRef.current.pause()
             return 50 + thirdDivPercentVisible*2;
         }
-        videoRef.current.play()   
+        // videoRef.current.play()   
         return 100;
     }
 
@@ -254,30 +254,30 @@ const About = () => {
                 </div>
 
                 {/* Motorcycle Video div */}
-                <div ref={thirdDivRef} className="motorcycleDiv">
-                    <div style={{width:'5px', height:`${thirdDivPercentVisible+2}%`}}>{/* spacer div */}</div>
-                    <div style={{width:`${getVideoWidth()}%`, height:200, backgroundColor:'red', display:'flex', flexDirection:'column', justifyContent:'flex-start', alignItems:'center'}}>
-                        {/* {thirdDivPercentVisible > 40 ? <h2 style={{color:'white'}}>MOTORCYCLING</h2> : <></>} */}
-                        {/* <video ref={videoRef} muted={true} loop={true} controls={false} style={{width:'100%'}}>
-                            <source src={require('../../../assets/videos/motorcycle.mp4')} type="video/mp4"/>
-                        </video> */}
-                    </div>
-                </div>
                 
-                <div style={{height:1000}}/>
+                {/* <div ref={thirdDivRef} className="motorcycleDiv">
+                    <div style={{width:'5px', height:`${thirdDivPercentVisible+2}%`}}></div>
+                    <div style={{width:`${getVideoWidth()}%`, height:200, backgroundColor:'red', display:'flex', flexDirection:'column', justifyContent:'flex-start', alignItems:'center'}}>
+                        {thirdDivPercentVisible > 40 ? <h2 style={{color:'white'}}>MOTORCYCLING</h2> : <></>}
+                        <video ref={videoRef} muted={true} loop={true} controls={false} style={{width:'100%'}}>
+                            <source src={require('../../../assets/videos/motorcycle.mp4')} type="video/mp4"/>
+                        </video>
+                    </div>
+                </div> */}
 
-                <div className="photoshopContainer">
+                <div className="hobbyContainer">
                     <div className="photoshopInfoDiv">
-                        <h2>Photoshop</h2>
-                        <p>some more stuff about photoshop</p>
+                        <h1>Photoshop</h1>
+                        <p>I've had the opportunity to practice and utilize my photoshop skills throughout almost every semester of undergrad. From volunteering to make the posters for group projects to ****, I've always embraced a chance to get more experience with the adobe suite.</p>
+                        <p>The image you see here is my attempt to recreate Erik Johansson's <em>Fishy Island</em> as a final unit project for the Computers and The Arts course I took as a freshman. Its comprised of 6 different images.</p>
                     </div>
                     
                     <div style={{display:'flex', flexDirection:'column', width:'375px', height:'100%', justifyContent:'flex-start'}}>
                         <div className="photoShopImageDiv">
                             <div style={{position:'absolute', top:0, left:0, width:`${sliderPercentage}%`, height:500, overflow:'hidden', zIndex:2}}>
-                                <img style={{height:'100%'}} src={require("../../../assets/images/photoshop/after.jpg")}></img>
+                                <img style={{height:'100%'}} src={require("../../../assets/images/photoshop/a.jpg")}></img>
                             </div>
-                            <img src={require("../../../assets/images/photoshop/before.jpg")} style={{height:500, position:'absolute', top:0, left:0, zIndex:0}}></img>
+                            <img src={require("../../../assets/images/photoshop/b.jpg")} style={{height:500, position:'absolute', top:0, left:0, zIndex:0}}></img>
                         </div>
 
                         <div style={{height:'100%', display:'flex', flexDirection:'column', justifyContent:'flex-end'}}>
@@ -286,6 +286,33 @@ const About = () => {
                     </div>
                 </div>
 
+                <div className="hobbyContainer">
+                    <div>
+                        <h1>Health & Fitness</h1>
+                        <p>Three of my favorite things (beyond programming of course) are playing volleyball, lifting weights, and cooking food. I feel so blessed to live in Salt Lake City, Utah where we have a great culture of being active and outdoorsy.</p>
+                    </div>
+                    <div className="mapContainer">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.1897136641664!2d-111.87294102449918!3d40.757851934808215!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8752f5e90d666eeb%3A0xc9b8d9306de22cd5!2sE%C5%8DS%20Fitness!5e0!3m2!1sen!2sus!4v1717449689204!5m2!1sen!2sus" 
+                            width="400" 
+                            height="400" 
+                            style={{ border: '2px solid grey' }} 
+                            allowFullScreen="" 
+                            loading="lazy" 
+                            referrerPolicy="no-referrer-when-downgrade"
+                        />
+                    </div>
+                </div>
+
+                <div className="hobbyContainer">
+                    <div>
+                        <h1>Cars & Motorcycles</h1>
+                        <div></div>
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
                 <div style={{height:3000}}></div>
             </div>
         </div>
