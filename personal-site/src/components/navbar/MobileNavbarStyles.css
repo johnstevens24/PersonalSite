@@ -1,0 +1,78 @@
+@import url('../../index.css');
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-120%)
+    }
+    to {
+        transform: translateY(0%)
+    }
+}
+
+@keyframes slideOut {
+    from {
+        transform: translateY(0%)
+    }
+    to {
+        transform: translateY(-120%)
+    }
+}
+
+.navbar {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    justify-content: flex-start;
+    align-items: flex-start;
+    /* background-color: var(--primary-dark); */
+    background: linear-gradient(to bottom, var(--primary-dark), rgba(214, 214, 214, .75));
+    animation: fadeIn .5s ease-in forwards;
+}
+
+ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+li {
+    margin: 1rem;
+    font-weight: 700;
+    font-size: xxx-large;
+    color: white;
+    animation: fadeIn 2.4s ease-in forwards;
+}
+
+li:hover {
+    color:black;
+    cursor: pointer;
+}
+
+.link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.navbarOptions {
+    transform: translateY(-110%)
+}
+
+.show {
+    animation: slideIn .4s ease-in forwards;
+}
+
+.hide {
+    animation: slideOut .4s ease-in forwards;
+}
+

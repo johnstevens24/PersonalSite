@@ -88,9 +88,6 @@ const About = () => {
             if(percent > 100)
                 setThirdDivPercentVisible(100)    
 
-            // videoRef.current.currentTime
-            
-
         }
     };
 
@@ -99,12 +96,12 @@ const About = () => {
         //     videoRef.current.currentTime=thirdDivPercentVisible/9 
             
         if(thirdDivPercentVisible < 25)
-            {
-                // if(videoRef.current !== null)
-                //     videoRef.current.pause()
-                return 50 + thirdDivPercentVisible*2;
-            }
-        // videoRef.current.play()   
+        {
+            if(videoRef.current !== null)
+                videoRef.current.pause()
+            return 50 + thirdDivPercentVisible*2;
+        }
+        videoRef.current.play()   
         return 100;
     }
 
@@ -173,11 +170,26 @@ const About = () => {
                 </div>
 
                 {/* Hobbies Banner div */}
-                <div ref={secondDivRef} style={{height:`auto`, width:'auto', display:'flex', flexDirection:'row'}}>
+                <div ref={secondDivRef} style={{height:`auto`, width:'auto', display:'flex', flexDirection:'row', marginBottom:50}}>
                     <div style={{paddingLeft:'1rem', opacity:`${secondDivPercentVisible/100}`, flex:1, background:'linear-gradient(to right, rgba(1, 214, 214, 1), rgba(214, 214, 214, 0))'}}>
                         <p className="hobbies"style={{fontSize:70}}><b style={{color:'white'}}>HOBBIES</b></p>
                     </div>
                 </div>
+
+                {/* Motorcycle Video div */}
+                <div ref={thirdDivRef} className="mobileMotorcycleDiv">
+                    {/* spacer div */}
+                    <div style={{width:'5px', height:`${thirdDivPercentVisible+2}%`}}/>
+
+                    <div style={{width:`${getVideoWidth()}%`, height:200, backgroundColor:'red', display:'flex', flexDirection:'column', justifyContent:'flex-start', alignItems:'center'}}>
+                        {/* {thirdDivPercentVisible > 40 ? <h2 style={{color:'white'}}>MOTORCYCLING</h2> : <></>} */}
+                        <video ref={videoRef} muted={true} loop={true} controls={false} style={{height:'100%'}}>
+                            <source src={require('../../../assets/videos/motorcycle.mp4')} type="video/mp4"/>
+                        </video>
+                    </div>
+                </div>
+                
+                
                 
                 <div style={{height:10000}}></div>
             </div>

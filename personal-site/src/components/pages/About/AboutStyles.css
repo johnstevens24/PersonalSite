@@ -108,7 +108,7 @@ img:hover {
 }
 
 
-
+/* Mobile stuff from here down */
 
 .mobileContainer{
     display: flex;
@@ -129,4 +129,14 @@ img:hover {
     padding: 5px;
     margin-bottom: .5rem;
     color: var(--primary-dark)
+}
+
+.mobileMotorcycleDiv {
+    height: 1000px;
+    width: 100%;
+    background-color: aquamarine;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
 }
