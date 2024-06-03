@@ -29,9 +29,6 @@
     align-items: center;
 }
 
-.imageDiv > img {
-    
-}
 
 .bioDiv {
     width: 40%;
@@ -92,6 +89,19 @@
     align-items: flex-start;
     background-color: aquamarine;
 }
+
+.hobbyInfoDiv {
+    width: 56%;
+    margin-left:2%;
+    margin-right:2%;
+    padding:10px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid grey;
+    border-radius: 10px;
+}
+
 .photoShopImageDiv {
     height:'100%';
     position: relative;
@@ -99,19 +109,12 @@
     flex-direction: column;
 }
 
-.photoshopInfoDiv {
-    background-color:aqua;
-    margin-right: 40px;
-    flex:1;
-    height: 100%;
-}
-
 img:hover {
     cursor:default;
 }
 
 .mapContainer {
-    width: 100%;
+    width: 40%;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -119,6 +122,27 @@ img:hover {
     align-items: center;
 }
 
+.imageRow {
+    width: 100%;
+    height: 35%;
+    padding: 1%;
+    display: flex;
+    flex-direction: row;
+}
+
+.imageRow div {
+    width: 25%;
+    aspect-ratio: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.imageRow div > img {
+    max-width:'100%';
+    max-height:'100%';
+    width:auto;
+}
 
 /* Mobile stuff from here down */
 

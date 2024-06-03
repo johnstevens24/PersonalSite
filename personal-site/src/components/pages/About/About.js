@@ -25,6 +25,8 @@ const About = () => {
 
     const [sliderPercentage, setSliderPercentage] = useState(50)
 
+    const [currentCar, setCurrentCar] = useState(0)
+
     useEffect(() => {
         window.addEventListener('scroll', checkVisibility);    
         return () => {
@@ -124,6 +126,16 @@ const About = () => {
         {name:"Django", icon:"https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/djangorest/djangorest-original.svg"},
         ]
     
+    const vehicles = [
+        {name:"2006 Acura TL", info:"My first car. I absolutely loved this thing. Black on black with a 6 speed manual transmission.", image:require("../../../assets/images/Me/IMG_3250.PNG")},
+        {name:"2007 BMW 335i", info:"My first and least problematic BMW. Its hard to believe the looks of an almost 20 year old car have held up so well.", image:require("../../../assets/images/vehicles/E92.JPG")},
+        {name:"2007 BMW 335i", info:"Absolute money pit. Spent too much time and money building this car. But, it helped me learn some great lessons about priorities.", image:require("../../../assets/images/vehicles/E90.JPG")},
+        {name:"2009 Yamaha FZ6", info:"First bike.", image:require("../../../assets/images/vehicles/FZ6.jpg")},
+        {name:"2014 Yamaha FZ09", info:"I feel like a bullet in traffic on this thing. Traversing Salt Lake City has never been so easy.", image:require("../../../assets/images/vehicles/FZ09.PNG")},
+        {name:"2010 BMW 535i", info:"Fun fact: I never filled this thing up with gas. Bought it with half a tank, let it sit, and flipped it a few months later with a quarter tank.", image:require("../../../assets/images/vehicles/E60.jpg")},
+        {name:"2002 Lexus IS300", info:"Ahhhh my 1JZ-GTE swapped junker. You will be missed.", image:require("../../../assets/images/vehicles/IS300.JPG")},
+    ]
+
     //small screen sizes
     if(width < 940)
         return(
@@ -266,7 +278,7 @@ const About = () => {
                 </div> */}
 
                 <div className="hobbyContainer">
-                    <div className="photoshopInfoDiv">
+                    <div className="hobbyInfoDiv">
                         <h1>Photoshop</h1>
                         <p>I've had the opportunity to practice and utilize my photoshop skills throughout almost every semester of undergrad. From volunteering to make the posters for group projects to ****, I've always embraced a chance to get more experience with the adobe suite.</p>
                         <p>The image you see here is my attempt to recreate Erik Johansson's <em>Fishy Island</em> as a final unit project for the Computers and The Arts course I took as a freshman. Its comprised of 6 different images.</p>
@@ -287,7 +299,42 @@ const About = () => {
                 </div>
 
                 <div className="hobbyContainer">
-                    <div>
+                    {/* container for car photo */}
+                    <div style={{width:'40%', height:'100%', display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'center', padding:'1%'}}>
+                        <img alt={vehicles[currentCar].name} src={vehicles[currentCar].image} style={{maxWidth:'100%', maxHeight:'100%', height:'auto'}}/>
+                    </div>
+
+                    {/* container for title, info, and other photos */}
+                    <div className="hobbyInfoDiv">
+                        <div style={{width:'100%', height:'30%', display:'flex', flexDirection:'column', padding:'10px'}}>
+                            <h1>Cars & Motorcycles</h1>
+                            <p>{vehicles[currentCar].info}</p>
+                        </div>
+                        <div className="imageRow">
+                            {vehicles.map((vehicle, index) => (
+                                index < 4 ? 
+                                <div>
+                                    <img alt={vehicle.name} onClick={() => setCurrentCar(index)} src={vehicle.image} style={{maxWidth:'100%', maxHeight:'100%', width:'auto'}}/>
+                                </div>
+                                :
+                                <></>
+                            ))}
+                        </div>
+                        <div className="imageRow">
+                            {vehicles.map((vehicle, index) => (
+                                (index >= 4 && index < 8) ? 
+                                <div>
+                                    <img alt={vehicle.name} onClick={() => setCurrentCar(index)} src={vehicle.image} style={{maxWidth:'100%', maxHeight:'100%', width:'auto'}}/>
+                                </div>
+                                :
+                                <></>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+
+                <div className="hobbyContainer">
+                    <div className="hobbyInfoDiv">
                         <h1>Health & Fitness</h1>
                         <p>Three of my favorite things (beyond programming of course) are playing volleyball, lifting weights, and cooking food. I feel so blessed to live in Salt Lake City, Utah where we have a great culture of being active and outdoorsy.</p>
                     </div>
@@ -304,16 +351,7 @@ const About = () => {
                     </div>
                 </div>
 
-                <div className="hobbyContainer">
-                    <div>
-                        <h1>Cars & Motorcycles</h1>
-                        <div></div>
-                    </div>
-                    <div>
-                        
-                    </div>
-                </div>
-                <div style={{height:3000}}></div>
+                
             </div>
         </div>
     )
