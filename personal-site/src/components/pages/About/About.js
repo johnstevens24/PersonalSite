@@ -281,10 +281,11 @@ const About = () => {
                     <div className="hobbyInfoDiv">
                         <h1>Photoshop</h1>
                         <p>I've had the opportunity to practice and utilize my photoshop skills throughout almost every semester of undergrad. From volunteering to make the posters for group projects to ****, I've always embraced a chance to get more experience with the adobe suite.</p>
-                        <p>The image you see here is my attempt to recreate Erik Johansson's <em>Fishy Island</em> as a final unit project for the Computers and The Arts course I took as a freshman. Its comprised of 6 different images.</p>
+                        <br/>
+                        <p>The image you see here is my attempt to create something similar to Erik Johansson's <a href="https://www.erikjo.com/medium-prints/fishy-island" target="_blank"><em>Fishy Island</em></a> as a final unit project for the Computers and The Arts course I took as a freshman. Its comprised of 6 different images.</p>
                     </div>
                     
-                    <div style={{display:'flex', flexDirection:'column', width:'375px', height:'100%', justifyContent:'flex-start'}}>
+                    <div style={{display:'flex', flexDirection:'column', width:'40%', height:'100%', justifyContent:'flex-start'}}>
                         <div className="photoShopImageDiv">
                             <div style={{position:'absolute', top:0, left:0, width:`${sliderPercentage}%`, height:500, overflow:'hidden', zIndex:2}}>
                                 <img style={{height:'100%'}} src={require("../../../assets/images/photoshop/a.jpg")}></img>
@@ -292,8 +293,8 @@ const About = () => {
                             <img src={require("../../../assets/images/photoshop/b.jpg")} style={{height:500, position:'absolute', top:0, left:0, zIndex:0}}></img>
                         </div>
 
-                        <div style={{height:'100%', display:'flex', flexDirection:'column', justifyContent:'flex-end'}}>
-                            <Slider onChange={(event, newValue) => { typeof newValue === 'number' ? setSliderPercentage(newValue) : setSliderPercentage(sliderPercentage)}} defaultValue={sliderPercentage} marks={[{value:0, label:'Before'}, {value:100, label:'After'}]}/>
+                        <div style={{height:'100%', width:'80%',display:'flex', flexDirection:'column', justifyContent:'flex-end'}}>
+                            <Slider onChange={(event, newValue) => { typeof newValue === 'number' ? setSliderPercentage(newValue*.81) : setSliderPercentage(sliderPercentage)}} defaultValue={sliderPercentage} marks={[{value:0, label:'Before'}, {value:100, label:'After'}]}/>
                         </div>
                     </div>
                 </div>

@@ -89,6 +89,14 @@
     align-items: flex-start;
 }
 
+p a {
+    color: var(--primary-blue)
+}
+
+p a:hover {
+    text-decoration: underline;
+}
+
 .hobbyInfoDiv {
     width: 56%;
     margin-left:2%;
