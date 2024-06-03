@@ -337,13 +337,15 @@ const About = () => {
                     <div className="hobbyInfoDiv">
                         <h1>Health & Fitness</h1>
                         <p>Three of my favorite things (beyond programming of course) are playing volleyball, lifting weights, and cooking food. I feel so blessed to live in Salt Lake City, Utah where we have a great culture of being active and outdoorsy.</p>
+                        <br></br>
+                        <p>Recently I've been going to EOS fitness at Trolley Square. Its pretty small, but its the closest one to me. You're probably saying to yourself "Why are you telling me this?" well because it gives me a reason to find out how to embed google maps into my website.</p>
                     </div>
                     <div className="mapContainer">
                         <iframe 
                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.1897136641664!2d-111.87294102449918!3d40.757851934808215!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8752f5e90d666eeb%3A0xc9b8d9306de22cd5!2sE%C5%8DS%20Fitness!5e0!3m2!1sen!2sus!4v1717449689204!5m2!1sen!2sus" 
                             width="400" 
                             height="400" 
-                            style={{ border: '2px solid grey' }} 
+                            style={{ border: '2px solid black' }} 
                             allowFullScreen="" 
                             loading="lazy" 
                             referrerPolicy="no-referrer-when-downgrade"
