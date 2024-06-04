@@ -6,6 +6,7 @@ import ProjectCarousel from './ProjectCarousel.js'
 
 const Projects = () => {
     const [width, setWidth] = useState(window.innerWidth)
+    
 
     const projects = [
         {name:"TILT", 
@@ -21,7 +22,7 @@ const Projects = () => {
         {name:"SLC Air Quality", 
         type:"Data Visualization", 
         techStack:"Python (pandas library)",
-        description:"For a data visualization course project, I was in a group of three students who decided to examine Salt Lake City's air quality. Having lived here, we knew that it was bad, but we'd also always heard that it was worse on the east side of the valley. We discovered that UTA (Utah Transit Authority) equipped some of their trains and buses with equipment that moniters and logs air quality every two seconds. After cleaning the data and reducing it to every **** minutes, we were left with 4.5 million data points to chart. We made a number of visualizations using the pandas library in python, and created a jupyter lab notebook containing our charts and graphs, as well as our conclusions. TLDR, the air sucks everywhere in Salt Lake.", 
+        description:"For a data visualization course project, I was in a group of three students who decided to examine Salt Lake City's air quality. Having lived here, we knew that it was bad, but we'd also always heard that it was worse on the east side of the valley. We discovered that UTA (Utah Transit Authority) equipped some of their trains and buses with equipment that moniters and logs air quality every two seconds. After cleaning the data and reducing it to every 2 minutes, we were left with 4.5 million data points to chart. We made a number of visualizations using the pandas library in python, and created a jupyter lab notebook containing our charts and graphs, as well as our conclusions. TLDR, the air sucks everywhere in Salt Lake.", 
         githubLink:"https://github.com/johnstevens24/MobileAirQuality"},
         {name:"SCI Research", 
         type:"Research Paper", 

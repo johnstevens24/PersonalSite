@@ -204,3 +204,8 @@
 .mobileAP p a:hover {
     text-decoration: underline;
 }
+
+.mobileAP h1 {
+    line-height: 100%;
+    margin-bottom:1rem;
+}

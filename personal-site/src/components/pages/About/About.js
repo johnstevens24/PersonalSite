@@ -39,10 +39,12 @@ const About = () => {
         if (firstDivRef.current) {
             const rect = firstDivRef.current.getBoundingClientRect();
 
+            if(rect.top >= 0)
+                setTitleOffset(titleOffsetInitial)
+
             if(rect.top < 0 && rect.bottom > 120)
-            {
                 setTitleOffset(-rect.top+titleOffsetInitial)
-            }
+            
             
 
 
@@ -154,18 +156,18 @@ const About = () => {
                     <div className="languageContainerInner" style={{display:'flex', flexDirection:'row', justifyContent:'flex-start', width:'100%'}}>
                         
                         {/* div for the moving text on the left */}
-                        <div ref={firstDivRef} style={{height:'auto', display:'flex', flexDirection:'column', paddingLeft:20}}>
+                        <div ref={firstDivRef} style={{height:'auto', display:'flex', width:'70%', flexDirection:'column', paddingLeft:20}}>
                             <h3 style={{position:'relative', top:`${titleOffset}px`, left:0}}>Familiar Languages & Technologies</h3>
                         </div>
 
                         {/* div for the list of languages on the right */}
-                        <div className="languageDiv">
+                        <div style={{display:'flex', flexDirection:'column', justifyContent:'flex-start', alignItems:'center', width:'30%'}}>
 
                             {/* this div allows the h2 above some padding along the as users scroll, but also aligns it properly with the first language*/}
                             <div style={{height:`${titleOffsetInitial}`}}></div>
                             {languages.map((language, index) => (
-                                <div key={index} style={{display:'flex', flexDirection:'row', width:'100%', justifyContent:'space-between'}}>
-                                    <h3>{language.name}</h3>
+                                <div key={index} style={{display:'flex', flexDirection:'row', width:'100%', justifyContent:'center'}}>
+                                    {/* <h3>{language.name}</h3> */}
                                     <div style={{flexDirection:'row', paddingRight:5}}>
                                         <img src={language.icon} style={{height:40}}></img>
                                     </div>
@@ -198,7 +200,7 @@ const About = () => {
                     </div>
                     
                     <div style={{display:'flex', flexDirection:'column', width:'100%', justifyContent:'flex-start', marginTop:'1rem', height:(width*1.26)+50}}>
-                            <div style={{position:'relative', width:'100%', height:(width*1.26), backgroundColor:'blue'}}>
+                            <div style={{position:'relative', width:'100%', height:(width*1.26)}}>
                                 <div style={{position:'absolute', top:0, left:0, width:`${sliderPercentage}%`, height:(width*1.26), overflow:'hidden', zIndex:2}}>
                                     <img style={{height:'100%'}} src={require("../../../assets/images/photoshop/a.jpg")}></img>
                                 </div>
@@ -262,6 +264,7 @@ const About = () => {
                     </div>
                 </div>
 
+                {/* Health & Fitness div */}
                 <div className="mobileHobbyContainer">
                     <div className="hobbyInfoDiv">
                         <h1>Health & Fitness</h1>
@@ -274,7 +277,7 @@ const About = () => {
                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.1897136641664!2d-111.87294102449918!3d40.757851934808215!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8752f5e90d666eeb%3A0xc9b8d9306de22cd5!2sE%C5%8DS%20Fitness!5e0!3m2!1sen!2sus!4v1717449689204!5m2!1sen!2sus" 
                             width={width-40} 
                             height={width-40} 
-                            style={{ border: '2px solid black' }} 
+                            style={{ border: '2px solid lightgrey' }} 
                             allowFullScreen="" 
                             loading="lazy" 
                             referrerPolicy="no-referrer-when-downgrade"

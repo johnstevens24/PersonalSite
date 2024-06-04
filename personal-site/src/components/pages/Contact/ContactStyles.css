@@ -86,7 +86,7 @@
     margin:10px;
 }
 
-.mobileCP p {
+.mobileCP .infoContainer p {
     background-color: var(--primary-light);
     padding:5px;
     border-radius: 10px;
