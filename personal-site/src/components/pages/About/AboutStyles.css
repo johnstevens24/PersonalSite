@@ -1,6 +1,5 @@
 @import url('../../../index.css');
 
-
 @keyframes slideInFromLeft {
     from {
         opacity: 0;
@@ -153,34 +152,47 @@
 }
 
 /* Mobile stuff from here down */
-
-.AP .mobileContainer{
+.mobileAP {
     display: flex;
     flex-direction: column;
     width: 100%;
 }
 
-.AP .mobileBioContainer{
-    display: flex;
-    flex-direction: column;
+.mobileBio {
     width: 100%;
-    padding-left: 5%;
-    padding-right: 5%;
-    margin-bottom: 2rem;
-}
-
-.AP .languageDiv h3 {
-    padding: 5px;
-    margin-bottom: .5rem;
-    color: var(--primary-dark)
-}
-
-.AP .mobileMotorcycleDiv {
-    height: 1000px;
-    width: 100%;
-    background-color: aquamarine;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    align-items: center;
+    padding:20px;
+    margin-bottom: 2rem;
+}
+
+
+
+.mobileHobbyContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding:20px;
+    padding-top:0px;
+    margin-top: 3rem;
+    /* background-color: aqua; */
+}
+
+.mobileImageRow {
+    width: 100%;
+    padding: 1%;
+    display: flex;
+    flex-direction: row;
+}
+
+.mobileImageRow div {
+    width: 50%;
+    aspect-ratio: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
 }

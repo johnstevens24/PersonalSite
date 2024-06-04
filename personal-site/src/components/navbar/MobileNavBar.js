@@ -27,7 +27,7 @@ function MobileNavBar() {
     }, [showList])
 
     return (
-        <div className="mobileNavbar">         
+        <div className="mobileNavbar" style={{width:'100%'}}>         
             <div style={{height:'50px', backgroundColor:`grey`, display:'flex', flexDirection:'row', alignItems:'center', paddingLeft:10, paddingRight:10}}>
                 <h2>JS</h2>
                 <div style={{flex:1}}/>

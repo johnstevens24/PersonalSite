@@ -139,73 +139,133 @@ const About = () => {
     //small screen sizes
     if(width < 940)
         return(
-            <div className="AP">
-                <div className=".mobileContainer">
+            <div className="mobileAP" style={{display:'flex', flexDirection:'column', justifyContent:'flex-start', width:'100%', overflow:'hidden'}}>
 
-                    {/* bio and picture */}
-                    <div className="mobileBioContainer">
-                        <img alt="Me" style={{width:'auto'}} src={require('../../../assets/images/Me/IMG_3250.PNG')}/>
-                        {width > 400 ? <h1>John Stevens</h1> : <p style={{fontSize:45, fontWeight:700}}>John Stevens</p>}
-                        <p>B.S. Software Development University of Utah 2024</p>
-                    </div>
-                    
-                    {/* familiar languages and technologies */}
-                    <div className="languageContainerOuter">
-                        {/* languages / technologies container*/}
-                        <div className="languageContainerInner" style={{display:'flex', flexDirection:'row', justifyContent:'flex-start', width:'100%'}}>
-                            
-                            {/* div for the moving text on the left */}
-                            <div ref={firstDivRef} style={{height:'auto', display:'flex', flexDirection:'column', paddingLeft:20}}>
-                                <h3 style={{position:'relative', top:`${titleOffset}px`, left:0}}>Familiar Languages & Technologies</h3>
-                            </div>
-
-                            {/* div for the list of languages on the right */}
-                            <div className="languageDiv">
-
-                                {/* this div allows the h2 above some padding along the as users scroll, but also aligns it properly with the first language*/}
-                                <div style={{height:`${titleOffsetInitial}`}}></div>
-                                {languages.map((language, index) => (
-                                    <div key={index} style={{display:'flex', flexDirection:'row', width:'100%', justifyContent:'space-between'}}>
-                                        <h3>{language.name}</h3>
-                                        <div style={{flexDirection:'row', paddingRight:5}}>
-                                            <img src={language.icon} style={{height:40}}></img>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-
-                        </div>
-                    </div>
-
-                    {/* div for the moving colored bar on the bottom */}
-                    <div style={{marginTop:40,height:40, width:'auto', display:'flex', flexDirection:'row', justifyContent:'flex-end', alignItems:'center'}}>
-                        <div style={{height:'100%', width:`${firstDivPercentVisible}%`, backgroundColor:'#007AFF'}}></div>
-                    </div>
-
-                    {/* Hobbies Banner div */}
-                    <div ref={secondDivRef} style={{height:`auto`, width:'auto', display:'flex', flexDirection:'row', marginBottom:50}}>
-                        <div style={{paddingLeft:'1rem', opacity:`${secondDivPercentVisible/100}`, flex:1, background:'linear-gradient(to right, rgba(1, 214, 214, 1), rgba(214, 214, 214, 0))'}}>
-                            <p className="hobbies"style={{fontSize:70}}><b style={{color:'white'}}>HOBBIES</b></p>
-                        </div>
-                    </div>
-
-                    {/* Motorcycle Video div */}
-                    <div ref={thirdDivRef} className="mobileMotorcycleDiv">
-                        {/* spacer div */}
-                        <div style={{width:'5px', height:`${thirdDivPercentVisible+2}%`}}/>
-
-                        <div style={{width:`${getVideoWidth()}%`, height:200, backgroundColor:'red', display:'flex', flexDirection:'column', justifyContent:'flex-start', alignItems:'center'}}>
-                            {/* {thirdDivPercentVisible > 40 ? <h2 style={{color:'white'}}>MOTORCYCLING</h2> : <></>} */}
-                            <video ref={videoRef} muted={true} loop={true} controls={false} style={{height:'100%'}}>
-                                <source src={require('../../../assets/videos/motorcycle.mp4')} type="video/mp4"/>
-                            </video>
-                        </div>
-                    </div>
-                    
-                    
-                    
-                    <div style={{height:10000}}></div>
+                {/* bio and picture */}
+                <div className="mobileBio">
+                    <img alt="Me" style={{width:'80%'}} src={require('../../../assets/images/Me/IMG_3250.PNG')}/>
+                    <h1>John Stevens</h1>
+                    <p>B.S. Software Development University of Utah 2024</p>
                 </div>
+                
+                {/* familiar languages and technologies */}
+                <div className="languageContainerOuter">
+                    {/* languages / technologies container*/}
+                    <div className="languageContainerInner" style={{display:'flex', flexDirection:'row', justifyContent:'flex-start', width:'100%'}}>
+                        
+                        {/* div for the moving text on the left */}
+                        <div ref={firstDivRef} style={{height:'auto', display:'flex', flexDirection:'column', paddingLeft:20}}>
+                            <h3 style={{position:'relative', top:`${titleOffset}px`, left:0}}>Familiar Languages & Technologies</h3>
+                        </div>
+
+                        {/* div for the list of languages on the right */}
+                        <div className="languageDiv">
+
+                            {/* this div allows the h2 above some padding along the as users scroll, but also aligns it properly with the first language*/}
+                            <div style={{height:`${titleOffsetInitial}`}}></div>
+                            {languages.map((language, index) => (
+                                <div key={index} style={{display:'flex', flexDirection:'row', width:'100%', justifyContent:'space-between'}}>
+                                    <h3>{language.name}</h3>
+                                    <div style={{flexDirection:'row', paddingRight:5}}>
+                                        <img src={language.icon} style={{height:40}}></img>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+
+                    </div>
+                </div>
+
+                {/* div for the moving colored bar on the bottom */}
+                <div style={{marginTop:40,height:40, width:'auto', display:'flex', flexDirection:'row', justifyContent:'flex-end', alignItems:'center'}}>
+                    <div style={{height:'100%', width:`${firstDivPercentVisible}%`, backgroundColor:'#007AFF'}}></div>
+                </div>
+
+                {/* Hobbies Banner div */}
+                <div ref={secondDivRef} style={{height:`auto`, width:'auto', display:'flex', flexDirection:'row'}}>
+                    <div style={{paddingLeft:'1rem', opacity:`${secondDivPercentVisible/100}`, flex:1, background:'linear-gradient(to right, rgba(1, 214, 214, 1), rgba(214, 214, 214, 0))'}}>
+                        <p className="hobbies"style={{fontSize:70}}><b style={{color:'white'}}>HOBBIES</b></p>
+                    </div>
+                </div>                   
+                
+                {/* Photoshop div */}
+                <div>
+                    <div className="mobileHobbyContainer">
+                        <h1>Photoshop</h1>
+                        <p>I've had the opportunity to practice and utilize my photoshop skills throughout almost every semester of undergrad. From volunteering to make the posters for group projects to ****, I've always embraced a chance to get more experience with the adobe suite.</p>
+                        <br/>
+                        <p>The image you see here is my attempt to create something similar to Erik Johansson's <a href="https://www.erikjo.com/medium-prints/fishy-island" target="_blank"><em>Fishy Island</em></a> as a final unit project for the Computers and The Arts course I took as a freshman. Its comprised of 6 different images.</p>
+                    </div>
+                    
+                    <div style={{display:'flex', flexDirection:'column', width:'100%', justifyContent:'flex-start', marginTop:'1rem', backgroundColor:'orange', height:(width*1.26)+50}}>
+                            <div style={{position:'relative', width:'100%', height:(width*1.26), backgroundColor:'blue'}}>
+                                <div style={{position:'absolute', top:0, left:0, width:`${sliderPercentage}%`, height:(width*1.26), overflow:'hidden', zIndex:2}}>
+                                    <img style={{height:'100%'}} src={require("../../../assets/images/photoshop/a.jpg")}></img>
+                                </div>
+                                <img src={require("../../../assets/images/photoshop/b.jpg")} style={{height:(width*1.26), position:'absolute', top:0, left:0, zIndex:0}}></img>
+                            </div>
+                                
+                            <div style={{height:'100%', width:'%',display:'flex', flexDirection:'column', justifyContent:'flex-end'}}>
+                                {/* I know hard coding values and multipliers isn't ideal. I need to circle back to this at some point and fix it. */}
+                                <Slider onChange={(event, newValue) => { typeof newValue === 'number' ? setSliderPercentage(newValue) : setSliderPercentage(sliderPercentage)}} defaultValue={sliderPercentage}/>
+                            </div>
+                    </div>
+                </div>
+                
+                {/* Vehicles div */}
+                <div>
+                    <div className="mobileHobbyContainer">
+                        <h1>Cars & Motorcycles</h1>
+                        <p>{vehicles[currentCar].info}</p>
+                        <img alt={vehicles[currentCar].name} src={vehicles[currentCar].image} style={{maxWidth:'100%', maxHeight:'100%', height:'auto', paddingTop:'1rem'}}/>
+                    </div>
+                    
+                    <div className="mobileImageRow">
+                        { vehicles.map((vehicle, index) => (
+                            index < 2 ? 
+                            <div>
+                                <img alt={vehicle.name} onClick={() => setCurrentCar(index)} src={vehicle.image} style={{maxWidth:'100%', maxHeight:'100%', width:'auto'}}/>
+                            </div>
+                            :
+                            <></>
+                        ))}
+                    </div>
+                    <div className="mobileImageRow">
+                        { vehicles.map((vehicle, index) => (
+                            index >= 2 && index < 4? 
+                            <div>
+                                <img alt={vehicle.name} onClick={() => setCurrentCar(index)} src={vehicle.image} style={{maxWidth:'100%', maxHeight:'100%', width:'auto'}}/>
+                            </div>
+                            :
+                            <></>
+                        ))}
+                    </div>
+                    <div className="mobileImageRow">
+                        { vehicles.map((vehicle, index) => (
+                            index >= 4 && index < 6 ? 
+                            <div>
+                                <img alt={vehicle.name} onClick={() => setCurrentCar(index)} src={vehicle.image} style={{maxWidth:'100%', maxHeight:'100%', width:'auto'}}/>
+                            </div>
+                            :
+                            <></>
+                        ))}
+                    </div>
+                    <div className="mobileImageRow">
+                        { vehicles.map((vehicle, index) => (
+                            index >= 6 && index < 8 ? 
+                            <div>
+                                <img alt={vehicle.name} onClick={() => setCurrentCar(index)} src={vehicle.image} style={{maxWidth:'100%', maxHeight:'100%', width:'auto'}}/>
+                            </div>
+                            :
+                            <></>
+                        ))}
+                    </div>
+                </div>
+
+                <div className="mobileHobbyContainer">
+
+                </div>
+
             </div>
         )
 
