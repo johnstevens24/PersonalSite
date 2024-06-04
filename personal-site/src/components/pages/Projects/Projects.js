@@ -69,9 +69,9 @@ const Projects = () => {
                             <a href={project.githubLink} target='_blank'>GitHub Link</a>
                         </div>
                     
-                        {/* <div className="imageDiv">
+                        <div className="imageDiv">
                             <ProjectCarousel project={project} />
-                        </div> */}
+                        </div>
                     </div>
                 
                 ))}

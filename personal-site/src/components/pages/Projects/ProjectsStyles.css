@@ -141,14 +141,25 @@
 .mobilePP .projectDiv {
     display: flex;
     flex-direction: column;
-    margin:15px;
+    margin-bottom:15px;
     padding: 1rem;
     width: auto;
-    height:100dvh;
-    background-color: var(--primary-light);
-    border-radius: 15px;
-    border: 2px var(--primary-dark) solid;
+    height: auto;
 
+}
+
+.mobilePP .projectDiv:last-child {
+    margin-bottom:0px;
+}
+
+.mobilePP .projectDiv:nth-child(even) {
+    background-color: black;
+}
+.mobilePP .projectDiv:nth-child(even) h1 {
+    color:white;
+}
+.mobilePP .projectDiv:nth-child(even) p {
+    color:white;
 }
 
 .mobilePP a {
@@ -170,6 +181,24 @@
     color:var(--primary-blue);
 }
 
+.mobilePP .projectDiv:nth-child(even) a:hover {
+    border:1px solid var(--primary-blue);
+    background-color: black;
+    color:var(--primary-blue);
+}
+
+.mobilePP .imageDiv {
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    width:100%;
+} 
+
 .mobilePP .TILT {
     font-style: italic;
 } 
+
+
