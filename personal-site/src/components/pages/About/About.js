@@ -226,15 +226,15 @@ const About = () => {
                 <div>
                     <div className="mobileHobbyContainer">
                         <h1>Cars & Motorcycles</h1>
-                        <p>{vehicles[currentCar].info}</p>
-                        <img alt={vehicles[currentCar].name} src={vehicles[currentCar].image} style={{maxWidth:'100%', maxHeight:'100%', height:'auto', paddingTop:'1rem'}}/>
+                        <p>{vehicles[6].info}</p>
+                        <img alt={vehicles[6].name} src={vehicles[6].image} style={{maxWidth:'100%', maxHeight:'100%', height:'auto', paddingTop:'1rem'}}/>
                     </div>
                     
                     <div className="mobileImageRow">
                         { vehicles.map((vehicle, index) => (
-                            index < 2 ? 
+                            index < 3 ? 
                             <div key={index}>
-                                <img alt={vehicle.name} onClick={() => setCurrentCar(index)} src={vehicle.image} style={{maxWidth:'100%', maxHeight:'100%', width:'auto'}}/>
+                                <img alt={vehicle.name} onClick={() => switchVehicle(index)} src={vehicle.image}/>
                             </div>
                             :
                             <></>
@@ -242,29 +242,9 @@ const About = () => {
                     </div>
                     <div className="mobileImageRow">
                         { vehicles.map((vehicle, index) => (
-                            index >= 2 && index < 4? 
+                            index >= 3 && index < 6? 
                             <div key={index}>
-                                <img alt={vehicle.name} onClick={() => setCurrentCar(index)} src={vehicle.image} style={{maxWidth:'100%', maxHeight:'100%', width:'auto'}}/>
-                            </div>
-                            :
-                            <></>
-                        ))}
-                    </div>
-                    <div className="mobileImageRow">
-                        { vehicles.map((vehicle, index) => (
-                            index >= 4 && index < 6 ? 
-                            <div key={index}>
-                                <img alt={vehicle.name} onClick={() => setCurrentCar(index)} src={vehicle.image} style={{maxWidth:'100%', maxHeight:'100%', width:'auto'}}/>
-                            </div>
-                            :
-                            <></>
-                        ))}
-                    </div>
-                    <div className="mobileImageRow">
-                        { vehicles.map((vehicle, index) => (
-                            index >= 6 && index < 8 ? 
-                            <div key={index}>
-                                <img alt={vehicle.name} onClick={() => setCurrentCar(index)} src={vehicle.image} style={{maxWidth:'100%', maxHeight:'100%', width:'auto'}}/>
+                                <img alt={vehicle.name} onClick={() => switchVehicle(index)} src={vehicle.image}/>
                             </div>
                             :
                             <></>

@@ -212,6 +212,12 @@
     align-items: center;
 }
 
+.mobileImageRow img {
+    max-width: 90%;
+    max-height: 90%;
+    width: auto;
+}
+
 .mobileAP p a {
     color: var(--primary-blue)
 }
