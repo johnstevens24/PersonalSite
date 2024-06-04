@@ -127,10 +127,10 @@ const About = () => {
         ]
     
     const vehicles = [
-        {name:"2006 Acura TL", info:"My first car. I absolutely loved this thing. Black on black with a 6 speed manual transmission.", image:require("../../../assets/images/Me/IMG_3250.PNG")},
+        {name:"2006 Acura TL", info:"My first car. I absolutely loved this thing. Black on black with a 6 speed manual transmission.", image:require("../../../assets/images/vehicles/TL.jpg")},
         {name:"2007 BMW 335i", info:"My first and least problematic BMW. Its hard to believe the looks of an almost 20 year old car have held up so well.", image:require("../../../assets/images/vehicles/E92.JPG")},
         {name:"2007 BMW 335i", info:"Absolute money pit. Spent too much time and money building this car. But, it helped me learn some great lessons about priorities.", image:require("../../../assets/images/vehicles/E90.JPG")},
-        {name:"2009 Yamaha FZ6", info:"First bike.", image:require("../../../assets/images/vehicles/FZ6.jpg")},
+        {name:"2009 Yamaha FZ6", info:"Great first bike, but I decided I wanted something with a little bit more torque.", image:require("../../../assets/images/vehicles/FZ6.jpg")},
         {name:"2014 Yamaha FZ09", info:"I feel like a bullet in traffic on this thing. Traversing Salt Lake City has never been so easy.", image:require("../../../assets/images/vehicles/FZ09.PNG")},
         {name:"2010 BMW 535i", info:"Fun fact: I never filled this thing up with gas. Bought it with half a tank, let it sit, and flipped it a few months later with a quarter tank.", image:require("../../../assets/images/vehicles/E60.jpg")},
         {name:"2002 Lexus IS300", info:"Ahhhh my 1JZ-GTE swapped junker. You will be missed.", image:require("../../../assets/images/vehicles/IS300.JPG")},
@@ -192,12 +192,12 @@ const About = () => {
                 <div>
                     <div className="mobileHobbyContainer">
                         <h1>Photoshop</h1>
-                        <p>I've had the opportunity to practice and utilize my photoshop skills throughout almost every semester of undergrad. From volunteering to make the posters for group projects to ****, I've always embraced a chance to get more experience with the adobe suite.</p>
+                        <p>I've had the opportunity to practice and utilize my photoshop skills throughout almost every semester of undergrad. From volunteering to make posters for group projects to just tinkering when I'm bored, I've always embraced a chance to get more experience with the adobe suite.</p>
                         <br/>
                         <p>The image you see here is my attempt to create something similar to Erik Johansson's <a href="https://www.erikjo.com/medium-prints/fishy-island" target="_blank"><em>Fishy Island</em></a> as a final unit project for the Computers and The Arts course I took as a freshman. Its comprised of 6 different images.</p>
                     </div>
                     
-                    <div style={{display:'flex', flexDirection:'column', width:'100%', justifyContent:'flex-start', marginTop:'1rem', backgroundColor:'orange', height:(width*1.26)+50}}>
+                    <div style={{display:'flex', flexDirection:'column', width:'100%', justifyContent:'flex-start', marginTop:'1rem', height:(width*1.26)+50}}>
                             <div style={{position:'relative', width:'100%', height:(width*1.26), backgroundColor:'blue'}}>
                                 <div style={{position:'absolute', top:0, left:0, width:`${sliderPercentage}%`, height:(width*1.26), overflow:'hidden', zIndex:2}}>
                                     <img style={{height:'100%'}} src={require("../../../assets/images/photoshop/a.jpg")}></img>
@@ -223,7 +223,7 @@ const About = () => {
                     <div className="mobileImageRow">
                         { vehicles.map((vehicle, index) => (
                             index < 2 ? 
-                            <div>
+                            <div key={index}>
                                 <img alt={vehicle.name} onClick={() => setCurrentCar(index)} src={vehicle.image} style={{maxWidth:'100%', maxHeight:'100%', width:'auto'}}/>
                             </div>
                             :
@@ -233,7 +233,7 @@ const About = () => {
                     <div className="mobileImageRow">
                         { vehicles.map((vehicle, index) => (
                             index >= 2 && index < 4? 
-                            <div>
+                            <div key={index}>
                                 <img alt={vehicle.name} onClick={() => setCurrentCar(index)} src={vehicle.image} style={{maxWidth:'100%', maxHeight:'100%', width:'auto'}}/>
                             </div>
                             :
@@ -243,7 +243,7 @@ const About = () => {
                     <div className="mobileImageRow">
                         { vehicles.map((vehicle, index) => (
                             index >= 4 && index < 6 ? 
-                            <div>
+                            <div key={index}>
                                 <img alt={vehicle.name} onClick={() => setCurrentCar(index)} src={vehicle.image} style={{maxWidth:'100%', maxHeight:'100%', width:'auto'}}/>
                             </div>
                             :
@@ -253,7 +253,7 @@ const About = () => {
                     <div className="mobileImageRow">
                         { vehicles.map((vehicle, index) => (
                             index >= 6 && index < 8 ? 
-                            <div>
+                            <div key={index}>
                                 <img alt={vehicle.name} onClick={() => setCurrentCar(index)} src={vehicle.image} style={{maxWidth:'100%', maxHeight:'100%', width:'auto'}}/>
                             </div>
                             :
@@ -263,7 +263,23 @@ const About = () => {
                 </div>
 
                 <div className="mobileHobbyContainer">
-
+                    <div className="hobbyInfoDiv">
+                        <h1>Health & Fitness</h1>
+                        <p>Three of my favorite things (beyond programming of course) are playing volleyball, lifting weights, and cooking food. I feel so blessed to live in Salt Lake City, Utah where we have a great culture of being active and outdoorsy.</p>
+                        <br></br>
+                        <p>Recently I've been going to EOS fitness at Trolley Square. Its pretty small, but its the closest one to me. You're probably saying to yourself "Why are you telling me this?" well because it gives me a reason to find out how to embed google maps into my website.</p>
+                    </div>
+                    <div className="mapContainer" style={{paddingTop:'2rem'}}>
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.1897136641664!2d-111.87294102449918!3d40.757851934808215!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8752f5e90d666eeb%3A0xc9b8d9306de22cd5!2sE%C5%8DS%20Fitness!5e0!3m2!1sen!2sus!4v1717449689204!5m2!1sen!2sus" 
+                            width={width-40} 
+                            height={width-40} 
+                            style={{ border: '2px solid black' }} 
+                            allowFullScreen="" 
+                            loading="lazy" 
+                            referrerPolicy="no-referrer-when-downgrade"
+                        />
+                    </div>
                 </div>
 
             </div>
@@ -342,7 +358,7 @@ const About = () => {
                 <div className="hobbyContainer">
                     <div className="hobbyInfoDiv">
                         <h1>Photoshop</h1>
-                        <p>I've had the opportunity to practice and utilize my photoshop skills throughout almost every semester of undergrad. From volunteering to make the posters for group projects to ****, I've always embraced a chance to get more experience with the adobe suite.</p>
+                        <p>I've had the opportunity to practice and utilize my photoshop skills throughout almost every semester of undergrad. From volunteering to make the posters for group projects to just tinkering when I'm bored, I've always embraced a chance to get more experience with the adobe suite.</p>
                         <br/>
                         <p>The image you see here is my attempt to create something similar to Erik Johansson's <a href="https://www.erikjo.com/medium-prints/fishy-island" target="_blank"><em>Fishy Island</em></a> as a final unit project for the Computers and The Arts course I took as a freshman. Its comprised of 6 different images.</p>
                     </div>
@@ -377,7 +393,7 @@ const About = () => {
                         <div className="imageRow">
                             {vehicles.map((vehicle, index) => (
                                 index < 4 ? 
-                                <div>
+                                <div key={index}>
                                     <img alt={vehicle.name} onClick={() => setCurrentCar(index)} src={vehicle.image} style={{maxWidth:'100%', maxHeight:'100%', width:'auto'}}/>
                                 </div>
                                 :
@@ -387,7 +403,7 @@ const About = () => {
                         <div className="imageRow">
                             {vehicles.map((vehicle, index) => (
                                 (index >= 4 && index < 8) ? 
-                                <div>
+                                <div key={index}>
                                     <img alt={vehicle.name} onClick={() => setCurrentCar(index)} src={vehicle.image} style={{maxWidth:'100%', maxHeight:'100%', width:'auto'}}/>
                                 </div>
                                 :

@@ -20,7 +20,7 @@
 }
 
 .AP .imageDiv {
-    width: 60%;
+    width: 100%;
     z-index: 1;
     display: flex;
     flex-direction: column;
@@ -195,4 +195,12 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.mobileAP p a {
+    color: var(--primary-blue)
+}
+
+.mobileAP p a:hover {
+    text-decoration: underline;
 }
