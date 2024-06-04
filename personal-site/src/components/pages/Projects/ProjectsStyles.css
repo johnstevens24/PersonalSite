@@ -24,7 +24,7 @@
     }
 }
 
-.projectDiv {
+.PP .projectDiv {
     display: flex;
     flex-direction: row;
     margin: 3rem;
@@ -33,22 +33,24 @@
 }
 
 
-.infoDiv {
+.PP .infoDiv {
     display: flex;
     flex-direction: column;
     width: 50%;
     height: 100%;
+    padding-right: 2%;
 }
 
-.imageDiv {
+.PP .imageDiv {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
     height: 100%;
+    width:50%;
 }
 
-img {
+.PP img {
     /* width:100%;
     height:90%; */
     cursor:none;
@@ -61,15 +63,15 @@ img {
 
 
 
-b {
+.PP b {
     color:var(--primary-dark);
 }
 
-.TILT {
+.PP .TILT {
     font-style: italic;
 } 
 
-div > a {
+.PP div > a {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -82,7 +84,7 @@ div > a {
     margin-top: 2rem;
 }
 
-div > a:hover {
+.PP div > a:hover {
     border:1px solid var(--primary-blue);
     background-color: white;
     color:var(--primary-blue);
@@ -91,26 +93,26 @@ div > a:hover {
 
 
 /* image transition stuff */
-.projectDiv.show > .imageDiv {
+.PP .projectDiv.show > .imageDiv {
     transform: translateX(0%);
     opacity: 1;
     transition: all 1s;
 }
 
-.projectDiv.hidden > .imageDiv {
+.PP .projectDiv.hidden > .imageDiv {
     transform: translateX(100%);
     opacity: 0;
     transition: all 1s;
 }
 
 /* info transition stuff */
-.projectDiv.show > .infoDiv {
+.PP .projectDiv.show > .infoDiv {
     transform: translateX(0%);
     opacity: 1;
     transition: all 1s;
 }
 
-.projectDiv.hidden > .infoDiv {
+.PP .projectDiv.hidden > .infoDiv {
     transform: translateX(-100%);
     opacity: 0;
     transition: all 1s;
@@ -136,3 +138,38 @@ div > a:hover {
     margin: auto;
 } */
 
+.mobilePP .projectDiv {
+    display: flex;
+    flex-direction: column;
+    margin:15px;
+    padding: 1rem;
+    width: auto;
+    height:100dvh;
+    background-color: var(--primary-light);
+    border-radius: 15px;
+    border: 2px var(--primary-dark) solid;
+
+}
+
+.mobilePP a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    background-color: var(--primary-blue);
+    color:white;
+    border-radius:100px;
+    padding:5px;
+    margin-top: 1rem;
+}
+
+.mobilePP a:hover {
+    border:1px solid var(--primary-blue);
+    background-color: white;
+    color:var(--primary-blue);
+}
+
+.mobilePP .TILT {
+    font-style: italic;
+} 

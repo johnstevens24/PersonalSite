@@ -1,7 +1,7 @@
 .CP .contactContainer {
     display: flex;
     flex-direction: column;
-    width: 50%;
+    width: 40%;
     justify-content: flex-start;
     align-items: flex-start;
     
@@ -17,12 +17,15 @@
 .CP .infoContainer {
     display: flex;
     flex-direction: column;
-    width: 50%;
+    width: 60%;
     justify-content: flex-start;
     align-items: center;
+}
+
+.CP .infoContainer p {
+    padding:1rem;
     background-color: var(--primary-light);
     border-radius: 10px;
-    padding:1rem;
 }
 
 .CP h1 {
@@ -46,6 +49,4 @@
 
 .CP h1:hover {
     background-color: white;
-    color: var(--primary-blue);
-    text-decoration: underline;
 }

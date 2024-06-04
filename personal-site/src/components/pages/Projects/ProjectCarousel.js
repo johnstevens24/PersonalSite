@@ -38,7 +38,7 @@ const ProjectCarousel = ({ project }) => {
         interval={5000}
       >
         {images.map((image, index) => (
-          <img key={index} className="slide" alt={`slide-${index}`} src={image} />
+          <img key={index} className="slide" alt={`slide-${index}`} src={image}/>
         ))}
       </Carousel>
     );

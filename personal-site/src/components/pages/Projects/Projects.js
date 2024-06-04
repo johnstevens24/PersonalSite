@@ -1,10 +1,11 @@
-import {React, useEffect } from "react";
+import {React, useEffect, useState } from "react";
 import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import './ProjectsStyles.css'
 import ProjectCarousel from './ProjectCarousel.js'
 
 const Projects = () => {
+    const [width, setWidth] = useState(window.innerWidth)
 
     const projects = [
         {name:"TILT", 
@@ -54,13 +55,34 @@ const Projects = () => {
         };
     }, []);
 
-    return(
-        <>
-        <div style={{display:'flex', flexDirection:"column", alignItems:'center', justifyContent:'flex-start'}}>
-            <div style={{maxWidth:1240}}>
-            
+
+    if(width < 940)
+        return(
+        <div className="mobilePP" style={{display:'flex', flexDirection:"column", alignItems:'center', justifyContent:'flex-start', width:'100%', overflow:'hidden'}}>
                 {projects.map((project, index) => (
-                    <div key={index} className="projectDiv">
+                    <div key={index} className="projectDiv" >
+                        <div className="infoDiv">
+                            <h1 className={project.name}>{project.name}</h1>
+                            <p><b>Type:</b> {project.type}</p>
+                            <p><b>Tech Stack:</b> {project.techStack}</p>
+                            <p>{project.description}</p>
+                            <a href={project.githubLink} target='_blank'>GitHub Link</a>
+                        </div>
+                    
+                        {/* <div className="imageDiv">
+                            <ProjectCarousel project={project} />
+                        </div> */}
+                    </div>
+                
+                ))}
+        </div>
+    )
+
+    return(
+        <div className="PP" style={{display:'flex', flexDirection:"column", alignItems:'center', justifyContent:'flex-start'}}>
+            <div style={{maxWidth:1240, width:1000, minWidth:940, overflow:'hidden'}}>
+                {projects.map((project, index) => (
+                    <div key={index} className="projectDiv" >
                         <div className="infoDiv">
                             <h2 className={project.name}>{project.name}</h2>
                             <p><b>Type:</b> {project.type}</p>
@@ -68,7 +90,7 @@ const Projects = () => {
                             <p>{project.description}</p>
                             <a href={project.githubLink} target='_blank'>GitHub Link</a>
                         </div>
-                        <div style={{width:'4%'}}/>
+                    
                         <div className="imageDiv">
                             <ProjectCarousel project={project} />
                         </div>
@@ -79,7 +101,6 @@ const Projects = () => {
 
 
         </div>
-        </>
     )
 }
 
