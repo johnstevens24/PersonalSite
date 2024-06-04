@@ -6,7 +6,7 @@ import "./index.css"
 
 import About from "./components/pages/About/About.js"
 import Projects from "./components/pages/Projects/Projects.js"
-import Personal from "./components/pages/Personal/Personal.js"
+import Contact from "./components/pages/Contact/Contact.js"
 
 function App() {
 
@@ -32,7 +32,7 @@ function App() {
       <Routes>
         <Route path="/about" element={<About/>}/>
         <Route path="/projects" element={<Projects/>}/>
-        <Route path="/personal" element={<Personal/>}/>
+        <Route path="/contact" element={<Contact/>}/>
         <Route path="*" element={<Navigate to="/about" replace />} />
       </Routes>
     </BrowserRouter>

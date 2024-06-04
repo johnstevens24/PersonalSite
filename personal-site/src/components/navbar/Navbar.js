@@ -8,7 +8,7 @@ function Navbar() {
             <ul style={{flexDirection:'row'}}>
                 <li><Link to="/about" className='link'>About</Link></li>
                 <li><Link to="/projects" className='link'>Projects</Link></li>
-                <li><Link to="/" className='link'>Contact</Link></li>
+                <li><Link to="/contact" className='link'>Contact</Link></li>
             </ul>
         </div>
     )
