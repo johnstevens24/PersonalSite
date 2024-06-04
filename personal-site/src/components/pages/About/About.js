@@ -374,9 +374,9 @@ const About = () => {
                             <img src={require("../../../assets/images/photoshop/b.jpg")} style={{height:500, position:'absolute', top:0, left:0, zIndex:0}}></img>
                         </div>
 
-                        <div style={{height:'100%', width:'80%',display:'flex', flexDirection:'column', justifyContent:'flex-end'}}>
+                        <div style={{height:'100%', width:'100%',display:'flex', flexDirection:'column', justifyContent:'flex-end'}}>
                             {/* I know hard coding values and multipliers isn't ideal. I need to circle back to this at some point and fix it. */}
-                            <Slider onChange={(event, newValue) => { typeof newValue === 'number' ? setSliderPercentage(newValue*.81) : setSliderPercentage(sliderPercentage)}} defaultValue={sliderPercentage*1.21} marks={[{value:0, label:'Before'}, {value:100, label:'After'}]}/>
+                            <Slider onChange={(event, newValue) => { typeof newValue === 'number' ? setSliderPercentage(newValue) : setSliderPercentage(sliderPercentage)}} defaultValue={sliderPercentage} marks={[{value:0, label:'Before'}, {value:100, label:'After'}]}/>
                         </div>
                     </div>
                 </div>
