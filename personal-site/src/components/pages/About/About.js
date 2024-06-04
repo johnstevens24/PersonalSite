@@ -287,11 +287,11 @@ const About = () => {
 
     return(
         <div className="AP" style={{display:'flex', flexDirection:"column", alignItems:'center', justifyContent:'flex-start'}}>
-            <div style={{maxWidth:1240}}>
+            <div style={{maxWidth:1240, width:1000, minWidth:940}}>
                 
                 <div className="bioContainer">
                     <div className="imageDiv">
-                        <img alt="Me" src={require('../../../assets/images/Me/IMG_3250.PNG')}/>
+                        <img alt="Me" src={require('../../../assets/images/Me/IMG_3250.PNG')} style={{maxWidth:'100%', maxHeight:'100%'}}/>
                     </div>
                     
                     <div className="bioDiv">
