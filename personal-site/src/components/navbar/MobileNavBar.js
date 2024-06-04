@@ -41,7 +41,7 @@ function MobileNavBar() {
                 <ul>
                     <li onClick={() => {setShowList(false)}}><Link to="/about" className='link'>About</Link></li>
                     <li onClick={() => {setShowList(false)}}><Link to="/projects" className='link'>Projects</Link></li>
-                    <li onClick={() => {setShowList(false)}}><Link to="/" className='link'>Contact</Link></li>
+                    <li onClick={() => {setShowList(false)}}><Link to="/contact" className='link'>Contact</Link></li>
                 </ul>
             </div>
     </div>

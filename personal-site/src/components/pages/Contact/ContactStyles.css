@@ -50,3 +50,44 @@
 .CP h1:hover {
     background-color: white;
 }
+
+
+
+
+/* Mobile from here down */
+
+.mobileCP .linkContainer {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: flex-start;
+    align-items: center;
+    margin-left:4%;
+}
+
+.mobileCP .linkContainer h1{
+    margin-right:10px;
+}
+
+.mobileCP a {
+    color: black;
+}
+
+.mobileCP a:hover {
+    color: var(--primary-blue);
+    text-decoration: underline;
+}
+
+.mobileCP h1:hover {
+    background-color: white;
+}
+
+.mobileCP .infoContainer {
+    margin:10px;
+}
+
+.mobileCP p {
+    background-color: var(--primary-light);
+    padding:5px;
+    border-radius: 10px;
+}
