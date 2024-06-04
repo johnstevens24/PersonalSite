@@ -41,8 +41,7 @@ const Contact = () => {
         }
     }
     return(
-        <>
-        <div style={{display:'flex', flexDirection:"column", alignItems:'center', justifyContent:'flex-start', maxWidth:1240, width:940}}>
+        <div className="CP" style={{display:'flex', flexDirection:"column", alignItems:'center', justifyContent:'flex-start', maxWidth:1240, width:940}}>
             <div style={{display:'flex', flexDirection:'row', width:'100%'}}>
                 <div className="contactContainer">
                     <div>
@@ -67,7 +66,6 @@ const Contact = () => {
                 </div>
             </div>
         </div>
-        </>
     )
 }
 

@@ -1,4 +1,4 @@
-.contactContainer {
+.CP .contactContainer {
     display: flex;
     flex-direction: column;
     width: 50%;
@@ -7,14 +7,14 @@
     
 }
 
-.contactContainer div {
+.CP .contactContainer div {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
 }
 
-.infoContainer {
+.CP .infoContainer {
     display: flex;
     flex-direction: column;
     width: 50%;
@@ -25,7 +25,7 @@
     padding:1rem;
 }
 
-h1 {
+.CP h1 {
     color: black;
     font-weight: 400;
     padding: 1rem;
@@ -35,16 +35,16 @@ h1 {
     font-size: xx-large;
 }
 
-a {
+.CP a {
     color: black;
 }
 
-a:hover {
+.CP a:hover {
     color: var(--primary-blue);
     text-decoration: underline;
 }
 
-h1:hover {
+.CP h1:hover {
     background-color: white;
     color: var(--primary-blue);
     text-decoration: underline;

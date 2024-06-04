@@ -19,14 +19,14 @@
     animation: fadeIn 1.5s ease-in forwards;
 }
 
-ul {
+.navbar ul {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
 }
 
-li {
+.navbar li {
     margin: 2rem;
     font-weight: 600;
     font-size: larger;
@@ -34,12 +34,12 @@ li {
     animation: fadeIn 3s ease-in forwards;
 }
 
-li:hover {
+.navbar li:hover {
     color:black;
     cursor: pointer;
 }
 
-.link {
+.navbar .link {
     text-decoration: none;
     color: inherit;
 }

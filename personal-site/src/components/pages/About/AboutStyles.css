@@ -13,14 +13,14 @@
     }
 }
 
-.bioContainer {
+.AP .bioContainer {
     margin:2rem;
     display: flex;
     flex-direction: row;
     width:auto;
 }
 
-.imageDiv {
+.AP .imageDiv {
     width: 60%;
     z-index: 1;
     display: flex;
@@ -30,7 +30,7 @@
 }
 
 
-.bioDiv {
+.AP .bioDiv {
     width: 40%;
     display: flex;
     flex-direction: column;
@@ -38,37 +38,37 @@
     animation: slideInFromLeft 1s ease-out forwards;
 }
 
-.languageContainerOuter {
+.AP .languageContainerOuter {
     display:'flex'; 
     direction:'column'; 
     width:'100%';
 }
 
-.languageContainerInner {
+.AP .languageContainerInner {
     display:'flex'; 
     flex-direction:'row'; 
     justify-content:'flex-start';
     width:'100%';
 }
 
-.languageDiv {
+.AP .languageDiv {
     display: flex;
     flex-direction: column;
     width:50%;
 }
 
-.languageDiv h2 {
+.AP .languageDiv h2 {
     padding: 5px;
     margin-bottom: .5rem;
     color: var(--primary-dark)
 }
 
-.hobbies:hover {
+.AP .hobbies:hover {
     cursor:default;
 }
 
 
-.motorcycleDiv {
+.AP .motorcycleDiv {
     height: 3000px;
     width: 100%;
     background-color: aquamarine;
@@ -78,7 +78,7 @@
     align-items: center;
 }
 
-.hobbyContainer {
+.AP .hobbyContainer {
     width: 100%;
     height: 550px;
     margin-top: 2rem;
@@ -89,15 +89,15 @@
     align-items: flex-start;
 }
 
-p a {
+.AP p a {
     color: var(--primary-blue)
 }
 
-p a:hover {
+.AP p a:hover {
     text-decoration: underline;
 }
 
-.hobbyInfoDiv {
+.AP .hobbyInfoDiv {
     width: 56%;
     margin-left:2%;
     margin-right:2%;
@@ -110,18 +110,18 @@ p a:hover {
     background-color: var(--primary-light);
 }
 
-.photoShopImageDiv {
+.AP .photoShopImageDiv {
     height:'100%';
     position: relative;
     display: flex;
     flex-direction: column;
 }
 
-img:hover {
+.AP img:hover {
     cursor:default;
 }
 
-.mapContainer {
+.AP .mapContainer {
     width: 40%;
     height: 100%;
     display: flex;
@@ -130,7 +130,7 @@ img:hover {
     align-items: center;
 }
 
-.imageRow {
+.AP .imageRow {
     width: 100%;
     height: 35%;
     padding: 1%;
@@ -138,7 +138,7 @@ img:hover {
     flex-direction: row;
 }
 
-.imageRow div {
+.AP .imageRow div {
     width: 25%;
     aspect-ratio: 1;
     display: flex;
@@ -146,7 +146,7 @@ img:hover {
     justify-content: center;
     align-items: center;
 }
-.imageRow div > img {
+.AP .imageRow div > img {
     max-width:'100%';
     max-height:'100%';
     width:auto;
@@ -154,13 +154,13 @@ img:hover {
 
 /* Mobile stuff from here down */
 
-.mobileContainer{
+.AP .mobileContainer{
     display: flex;
     flex-direction: column;
     width: 100%;
 }
 
-.mobileBioContainer{
+.AP .mobileBioContainer{
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -169,13 +169,13 @@ img:hover {
     margin-bottom: 2rem;
 }
 
-.languageDiv h3 {
+.AP .languageDiv h3 {
     padding: 5px;
     margin-bottom: .5rem;
     color: var(--primary-dark)
 }
 
-.mobileMotorcycleDiv {
+.AP .mobileMotorcycleDiv {
     height: 1000px;
     width: 100%;
     background-color: aquamarine;

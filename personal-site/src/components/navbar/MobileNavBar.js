@@ -27,7 +27,7 @@ function MobileNavBar() {
     }, [showList])
 
     return (
-        <>         
+        <div className="mobileNavbar">         
             <div style={{height:'50px', backgroundColor:`grey`, display:'flex', flexDirection:'row', alignItems:'center', paddingLeft:10, paddingRight:10}}>
                 <h2>JS</h2>
                 <div style={{flex:1}}/>
@@ -44,7 +44,7 @@ function MobileNavBar() {
                     <li onClick={() => {setShowList(false)}}><Link to="/" className='link'>Contact</Link></li>
                 </ul>
             </div>
-    </>
+    </div>
     )
     
 }
