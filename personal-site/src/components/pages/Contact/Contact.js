@@ -1,10 +1,45 @@
-import {React, useEffect } from "react";
+import {React, useEffect, useState } from "react";
 import './ContactStyles.css'
 import { IconCopy } from '@tabler/icons-react';
 
 const Contact = () => {
+    const [emailMessage, setEmailMessage] = useState("")
+    const [linkedInMessage, setLinkedInMessage] = useState("")
+    const [githubMessage, setGithubMessage] = useState("")
+    const displayTime = 1500;
 
-
+    function copyToClipBoard(link) {
+        setEmailMessage("")
+        setLinkedInMessage("")
+        setGithubMessage("")
+        if(link === "email")
+        {
+            navigator.clipboard.writeText("johnstevens2424@gmail.com");
+            setEmailMessage("copied to clipboard")
+            setTimeout(() => {
+                setEmailMessage("")
+            }, displayTime)
+            return;
+        }
+        if(link === "linkedIn")
+        {
+            navigator.clipboard.writeText("https://www.linkedin.com/in/john-stevens-064022253/");
+            setLinkedInMessage("copied to clipboard")
+            setTimeout(() => {
+                setLinkedInMessage("")
+            }, displayTime)
+            return;
+        }
+        if(link === "github")
+        {
+            navigator.clipboard.writeText("https://github.com/johnstevens24");
+            setGithubMessage("copied to clipboard")
+            setTimeout(() => {
+                setGithubMessage("")
+            }, displayTime)
+            return;
+        }
+    }
     return(
         <>
         <div style={{display:'flex', flexDirection:"column", alignItems:'center', justifyContent:'flex-start', maxWidth:1240, width:940}}>
@@ -12,15 +47,18 @@ const Contact = () => {
                 <div className="contactContainer">
                     <div>
                         <h1>Email</h1>
-                        <IconCopy/>
+                        <IconCopy onClick={() => copyToClipBoard('email')}/>
+                        <p>{emailMessage}</p>
                     </div>
                     <div>
                         <h1><a href="https://www.linkedin.com/in/john-stevens-064022253/" target="_blank">LinkedIn</a></h1>
-                        <IconCopy onClick={() => console.log('copy linkedIn')}/>
+                        <IconCopy onClick={() => copyToClipBoard('linkedIn')}/>
+                        <p>{linkedInMessage}</p>
                     </div>
                     <div>
                         <h1><a href="https://github.com/johnstevens24" target="_blank">Github</a></h1>
-                        <IconCopy/>
+                        <IconCopy onClick={() => copyToClipBoard('github')}/>
+                        <p>{githubMessage}</p>
                     </div>
                     
                 </div>
