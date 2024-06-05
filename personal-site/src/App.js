@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Navbar from "./components/navbar/Navbar.js"
 import MobileNavBar from './components/navbar/MobileNavBar.js';
+import Footer from './components/footer/Footer.js'
 import "./index.css"
 
 import About from "./components/pages/About/About.js"
@@ -28,13 +29,13 @@ function App() {
   <>
     <BrowserRouter>
       {width > 940 ? <Navbar/> : <MobileNavBar/>}
-      {/* <Navbar></Navbar> */}
       <Routes>
         <Route path="/about" element={<About/>}/>
         <Route path="/projects" element={<Projects/>}/>
         <Route path="/contact" element={<Contact/>}/>
         <Route path="*" element={<Navigate to="/about" replace />} />
       </Routes>
+      <Footer/>
     </BrowserRouter>
   </>
   );

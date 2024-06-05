@@ -281,7 +281,7 @@ const About = () => {
                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.1897136641664!2d-111.87294102449918!3d40.757851934808215!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8752f5e90d666eeb%3A0xc9b8d9306de22cd5!2sE%C5%8DS%20Fitness!5e0!3m2!1sen!2sus!4v1717449689204!5m2!1sen!2sus" 
                             width={width-40} 
                             height={width-40} 
-                            style={{ border: '2px solid lightgrey' }} 
+                            style={{ border: '1px solid lightgrey' }} 
                             allowFullScreen="" 
                             loading="lazy" 
                             referrerPolicy="no-referrer-when-downgrade"
@@ -432,7 +432,7 @@ const About = () => {
                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.1897136641664!2d-111.87294102449918!3d40.757851934808215!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8752f5e90d666eeb%3A0xc9b8d9306de22cd5!2sE%C5%8DS%20Fitness!5e0!3m2!1sen!2sus!4v1717449689204!5m2!1sen!2sus" 
                             width="400" 
                             height="400" 
-                            style={{ border: '2px solid black' }} 
+                            style={{ border: '1px solid lightgrey' }} 
                             allowFullScreen="" 
                             loading="lazy" 
                             referrerPolicy="no-referrer-when-downgrade"

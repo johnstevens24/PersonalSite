@@ -1,6 +1,7 @@
 import {React, useEffect, useState } from "react";
 import './ContactStyles.css'
 import { IconCopy } from '@tabler/icons-react';
+import { calculateNewValue } from "@testing-library/user-event/dist/utils";
 
 const Contact = () => {
     const [width, setWidth] = useState(window.innerWidth)
@@ -75,9 +76,9 @@ const Contact = () => {
     }
 
     return(
-        <div className="CP" style={{display:'flex', flexDirection:"column", alignItems:'center', justifyContent:'flex-start'}}>
+        <div className="CP">
             <div style={{maxWidth:1240, width:1000, minWidth:940}}>
-                <div style={{display:'flex', flexDirection:'row', width:'100%', marginTop:'2rem', justifyContent:'center'}}>
+                <div style={{display:'flex', flexDirection:'row', width:'100%', justifyContent:'center', paddingTop:'2rem'}}>
                     <div className="contactContainer">
                         <div>
                             <h1><a href="mailto:johnstevens2424@gmail.com">Email</a></h1>
