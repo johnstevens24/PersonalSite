@@ -32,13 +32,14 @@ const About = () => {
             <h1>John Stevens</h1>
             <p>B.S. Software Development University of Utah 2024</p>
             <br/>
-            <p>Hi, my name is John. I recently graduated from the University of Utah where I studied Computer Science before switching to Software Development. 
-                Because I decided to switch midway through my major, I ended up taking a very broad range of classes. My studies covered everything from cpu architecture 
-                to UI/UX, databases to entreprenuership, website and mobile app development to CUDA programming for work on large datasets, and a whole lot in between.
+            <p> Hi, my name is John. I recently graduated from the University of Utah, where I initially studied Computer Science before switching to Software Development. 
+                Because I decided to switch majors midway through my studies, I ended up taking a wide range of classes. My coursework covered everything from CPU architecture 
+                to UI/UX, databases to entrepreneurship, and website and mobile app development to CUDA programming for large datasets, among many other topics. 
             </p>
             <br/>
-            <p>Recently I've taken an interest in the React library and have made a few websites using it; this one being the most recent. I've also made a couple of apps
-                using React Native that you can check out on the Projects page.
+            <p>    
+                Recently, I have taken an interest in the React library and have developed a few websites using it, including the one you are currently viewing. 
+                I have also created a couple of apps using React Native, which you can check out on the Projects page.
             </p>
         </>
     )
