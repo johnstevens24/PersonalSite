@@ -111,21 +111,19 @@ const About = () => {
 
     
     const languages = [
-        {name:"JavaScript", icon:"https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg"},
-        {name:"Python", icon:"https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg"},
-        {name:"Java", icon:"https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg"},
-        {name:"HTML5", icon:"https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg"},
-        {name:"SQL", icon:"https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azuresqldatabase/azuresqldatabase-original.svg"},
-        {name:"sqlite", icon:"https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sqlite/sqlite-original.svg"},
-        {name:"C", icon:"https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/c/c-original.svg"},
-        {name:"C++", icon:"https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg"},
-        {name:"C#", icon:"https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/csharp/csharp-original.svg"}, 
-        {name:"JSON", icon:"https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/json/json-original.svg"},
-        {name:"XML", icon:"https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/xml/xml-original.svg"},
-        {name:"React", icon:"https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg"},
-        {name:"Github", icon:"https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg"}, 
-        {name:"Gitlab", icon:"https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/gitlab/gitlab-original.svg"}, 
-        {name:"Django", icon:"https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/djangorest/djangorest-original.svg"},
+        {name:"JavaScript", icon:["https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg"]},
+        {name:"Python", icon:["https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg"]},
+        {name:"Java", icon:["https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg"]},
+        {name:"HTML5/CSS", icon:["https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg","https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg"]},
+        {name:"SQL", icon:["https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azuresqldatabase/azuresqldatabase-original.svg"]},
+        {name:"sqlite", icon:["https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sqlite/sqlite-original.svg"]},
+        {name:"C/C++/C#", icon:["https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/c/c-original.svg", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/csharp/csharp-original.svg"]},
+        {name:"JSON", icon:["https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/json/json-original.svg"]},
+        {name:"XML", icon:["https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/xml/xml-original.svg"]},
+        {name:"React", icon:["https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg"]},
+        {name:"Github", icon:["https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg"]}, 
+        {name:"Gitlab", icon:["https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/gitlab/gitlab-original.svg"]}, 
+        {name:"Django", icon:["https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/djangorest/djangorest-original.svg"]},
         ]
     
     const [vehicles, setVehicles] = useState([
@@ -174,10 +172,11 @@ const About = () => {
                             {/* this div allows the h2 above some padding along the as users scroll, but also aligns it properly with the first language*/}
                             <div style={{height:`${titleOffsetInitial}`}}></div>
                             {languages.map((language, index) => (
-                                <div key={index} style={{display:'flex', flexDirection:'row', width:'100%', justifyContent:'center'}}>
-                                    {/* <h3>{language.name}</h3> */}
-                                    <div style={{flexDirection:'row', paddingRight:5}}>
-                                        <img src={language.icon} style={{height:40}}></img>
+                                <div key={index} style={{display:'flex', flexDirection:'row', width:'100%', justifyContent:'center', height:45}}>
+                                    <div style={{flexDirection:'row', paddingRight:5, position:'relative', width:40}}>
+                                        {language.icon.map((icon, iconIndex) => (
+                                            <img key={iconIndex} src={icon} style={{height:40, position:'absolute', left:(-20*iconIndex)}}></img>
+                                        ))}
                                     </div>
                                 </div>
                             ))}
@@ -308,10 +307,12 @@ const About = () => {
                             {/* this div allows the h2 above some padding along the as users scroll, but also aligns it properly with the first language*/}
                             <div style={{height:`${titleOffsetInitial}`}}></div>
                             {languages.map((language, index) => (
-                                <div key={index} style={{display:'flex', flexDirection:'row', width:'100%', justifyContent:'space-between'}}>
-                                    <h2>{language.name}</h2>
-                                    <div style={{flexDirection:'row', paddingRight:5}}>
-                                        <img src={language.icon} style={{height:40}}></img>
+                                <div key={index} style={{display:'flex', flexDirection:'row', width:'100%', justifyContent:'space-between', backgroundColor:'orange'}}>
+                                    <h2 style={{backgroundColor:'pink'}}>{language.name}</h2>
+                                    <div style={{flexDirection:'row', paddingRight:5, backgroundColor:'blue', position:'relative', width:40}}>
+                                        {language.icon.map((icon, iconIndex) => (
+                                            <img key={iconIndex} src={icon} style={{height:40, position:'absolute', left:(-20*iconIndex)}}></img>
+                                        ))}
                                     </div>
                                 </div>
                             ))}
