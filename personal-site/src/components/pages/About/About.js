@@ -27,6 +27,24 @@ const About = () => {
 
     const [currentCar, setCurrentCar] = useState(6)
 
+    const bioStuff = (
+        <>
+            <h1>John Stevens</h1>
+            <p>B.S. Software Development University of Utah 2024</p>
+            <br/>
+            <p>Hi, my name is John. I recently graduated from the University of Utah where I studied Computer Science before switching to Software Development. 
+                Because I decided to switch midway through my major, I ended up taking a very broad range of classes. My studies covered everything from cpu architecture 
+                to UI/UX, databases to entreprenuership, website and mobile app development to CUDA programming for work on large datasets, and a whole lot in between.
+            </p>
+            <br/>
+            <p>Recently I've taken an interest in the React library and have made a few websites using it; this one being the most recent. I've also made a couple of apps
+                using React Native that you can check out on the Projects page.
+            </p>
+        </>
+    )
+        
+    
+
     useEffect(() => {
         window.addEventListener('scroll', checkVisibility);    
         return () => {
@@ -152,8 +170,7 @@ const About = () => {
                 {/* bio and picture */}
                 <div className="mobileBio">
                     <img alt="Me" style={{width:'80%'}} src={require('../../../assets/images/Me/IMG_3250.PNG')}/>
-                    <h1>John Stevens</h1>
-                    <p>B.S. Software Development University of Utah 2024</p>
+                    {bioStuff}
                 </div>
                 
                 {/* familiar languages and technologies */}
@@ -285,9 +302,7 @@ const About = () => {
                     </div>
                     
                     <div className="bioDiv">
-                        <h1>John Stevens</h1>
-                        <p>B.S. Software Development University of Utah 2024</p>
-                        <p></p>
+                        {bioStuff}
                     </div>
                 </div>
 
@@ -307,9 +322,9 @@ const About = () => {
                             {/* this div allows the h2 above some padding along the as users scroll, but also aligns it properly with the first language*/}
                             <div style={{height:`${titleOffsetInitial}`}}></div>
                             {languages.map((language, index) => (
-                                <div key={index} style={{display:'flex', flexDirection:'row', width:'100%', justifyContent:'space-between', backgroundColor:'orange'}}>
-                                    <h2 style={{backgroundColor:'pink'}}>{language.name}</h2>
-                                    <div style={{flexDirection:'row', paddingRight:5, backgroundColor:'blue', position:'relative', width:40}}>
+                                <div key={index} style={{display:'flex', flexDirection:'row', width:'100%', justifyContent:'space-between'}}>
+                                    <h2>{language.name}</h2>
+                                    <div style={{flexDirection:'row', paddingRight:5, position:'relative', width:40}}>
                                         {language.icon.map((icon, iconIndex) => (
                                             <img key={iconIndex} src={icon} style={{height:40, position:'absolute', left:(-20*iconIndex)}}></img>
                                         ))}
