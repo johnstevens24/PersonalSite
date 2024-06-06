@@ -24,11 +24,11 @@ const Projects = () => {
         techStack:"Python (pandas library)",
         description:"For a data visualization course project, I was in a group of three students who decided to examine Salt Lake City's air quality. Having lived here, we knew that it was bad, but we'd also always heard that it was worse on the east side of the valley. We discovered that UTA (Utah Transit Authority) equipped some of their trains and buses with equipment that moniters and logs air quality every two seconds. After cleaning the data and reducing it to every 2 minutes, we were left with 4.5 million data points to chart. We made a number of visualizations using the pandas library in python, and created a jupyter lab notebook containing our charts and graphs, as well as our conclusions. TLDR, the air sucks everywhere in Salt Lake.", 
         githubLink:"https://github.com/johnstevens24/MobileAirQuality"},
-        {name:"SCI Research", 
-        type:"Research Paper", 
-        techStack:"None", 
-        description:"For a class on ubiquitous computer and accessibility, I conducted a small study and wrote a research paper on the best way for people who have suffered from spinal cord injuries to track their food intake.", 
-        githubLink:""}
+        // {name:"SCI Research", 
+        // type:"Research Paper", 
+        // techStack:"None", 
+        // description:"For a class on ubiquitous computer and accessibility, I conducted a small study and wrote a research paper on the best way for people who have suffered from spinal cord injuries to track their food intake.", 
+        // githubLink:""}
 
     ]
 
