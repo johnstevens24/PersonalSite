@@ -8,6 +8,7 @@ import "./index.css"
 import About from "./components/pages/About/About.js"
 import Projects from "./components/pages/Projects/Projects.js"
 import Contact from "./components/pages/Contact/Contact.js"
+import HomePage from './components/pages/Home/HomePage.js';
 
 function App() {
 
@@ -27,7 +28,7 @@ function App() {
 
   return (
   <>
-    <BrowserRouter>
+    {/* <BrowserRouter>
       {width > 940 ? <Navbar/> : <MobileNavBar/>}
       <Routes>
         <Route path="/about" element={<About/>}/>
@@ -36,7 +37,8 @@ function App() {
         <Route path="*" element={<Navigate to="/about" replace />} />
       </Routes>
       <Footer/>
-    </BrowserRouter>
+    </BrowserRouter> */}
+    <HomePage/>
   </>
   );
 }
