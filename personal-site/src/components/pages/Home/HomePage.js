@@ -1,4 +1,7 @@
 import React from 'react'
+import { IconMail } from '@tabler/icons-react';
+import { IconBrandLinkedin } from '@tabler/icons-react';
+import { IconBrandGithub } from '@tabler/icons-react';
 
 import "./HomePageStyles.css"
 
@@ -33,6 +36,16 @@ const HomePage = () => {
     return(
         <div style={{display:'flex', flexDirection:'column', justifyContent:'flex-start', alignItems:'center'}}>
             <div style={{width:1100, maxWidth:1240, minWidth:940, height:'1000px'}}>
+                
+                <div className='contactDiv'>
+                    <IconMail size="50" className='contactIcon'/>
+                    <IconBrandLinkedin size="50" className='contactIcon'/>
+                    <IconBrandGithub size="50" className='contactIcon'/>
+                </div>
+                
+                
+                
+                
                 {/* Bio container */}
                 <div className='bioContainer'>
                     <div style={{width:'20%', aspectRatio:1, marginRight:'20px'}}>
@@ -47,7 +60,7 @@ const HomePage = () => {
                 <div className='languagesContainer'>
                     <div style={{width:'40%'}}>
                         <h2>I'm most familiar with these languages</h2>
-                        <p>I have used languages and technologies, but these ones are where most of my experience lies.</p>
+                        <p>I have used other languages and technologies, but these ones are where most of my experience lies.</p>
                     </div>
                     <div className='languageGrid'>
                         {languages.map((language, index) => (
@@ -71,7 +84,7 @@ const HomePage = () => {
                 </div>
                 <hr></hr>
                 {/* Projects container */}
-                <div>
+                <div className='projectsContainer'>
 
 
                 </div>
