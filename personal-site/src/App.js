@@ -39,6 +39,7 @@ function App() {
       <Footer/>
     </BrowserRouter> */}
     <HomePage/>
+    <Footer/>
   </>
   );
 }

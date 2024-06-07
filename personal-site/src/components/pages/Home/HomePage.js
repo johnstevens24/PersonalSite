@@ -35,12 +35,24 @@ const HomePage = () => {
 
     return(
         <div style={{display:'flex', flexDirection:'column', justifyContent:'flex-start', alignItems:'center'}}>
-            <div style={{width:1100, maxWidth:1240, minWidth:940, height:'1000px'}}>
+            <div style={{width:1100, maxWidth:1240, minWidth:940}}>
                 
                 <div className='contactDiv'>
-                    <IconMail size="50" className='contactIcon'/>
-                    <IconBrandLinkedin size="50" className='contactIcon'/>
-                    <IconBrandGithub size="50" className='contactIcon'/>
+                    <div className='iconDiv'  onClick={() => {window.open("mailto:johnstevens2424@gmail.com");}}>
+                        <IconMail size="50" className='contactIcon'/>
+                        <div className='hoverText'>Email</div>
+                    </div>
+                    <div className='iconDiv'  onClick={() => {window.open("https://www.linkedin.com/in/john-stevens-064022253/");}}>
+                        <IconBrandLinkedin size="50" className='contactIcon'/>
+                        <div className='hoverText'>LinkedIn</div>
+                    </div>
+                    <div className='iconDiv'  onClick={() => {window.open("https://github.com/johnstevens24?tab=repositories")}}>
+                        <IconBrandGithub size="50" className='contactIcon'/>
+                        <div className='hoverText'>GitHub</div>
+                    </div>
+                    
+                    
+                    
                 </div>
                 
                 
