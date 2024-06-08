@@ -46,8 +46,8 @@
     position:fixed;
     width:50px;
     height:180px;
-    top:100px;
-    left:1200px;
+    top:40px;
+    right:40px;
     z-index: 10;
     display: flex;
     flex-direction: column;
@@ -99,6 +99,7 @@
     flex-direction: row;
     align-items: center;
     padding:10px;
+    background-color: aqua;
 }
 
 .hand {
@@ -142,9 +143,46 @@ h2 {
 } */
 
 .projectsContainer {
-    height: 600px;
+    height: 150;
     width: 100%;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     background-color: aqua;
+    padding: 40px;
 }
+
+.carouselDiv {
+    height:450px;
+    width:100%;
+}
+
+
+.projectSlide {
+    width: 700px;
+    height: 400px;
+    background-color: #f2f2f2;
+    border-radius: 10px;
+    padding:40px;
+}
+
+.projectSlideInfo {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+.projectSlideInfo a {
+    color: #f2f2f2;
+    background-color: black;
+    padding:.5rem;
+    border-radius: 100px;
+}
+
+.projectSlideInfo a:hover {
+    background-color: #f2f2f2;
+    color: black;
+    border: 1px solid black;
+}
+
+

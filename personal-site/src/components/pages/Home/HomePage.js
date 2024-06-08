@@ -1,11 +1,17 @@
 import React from 'react'
+import { useState, useEffect } from 'react'
 import { IconMail } from '@tabler/icons-react';
 import { IconBrandLinkedin } from '@tabler/icons-react';
 import { IconBrandGithub } from '@tabler/icons-react';
+import { Carousel } from 'react-responsive-carousel';
+import 'react-responsive-carousel/lib/styles/carousel.min.css'; // Import carousel styles
+import 'react-alice-carousel/lib/alice-carousel.css';
 
 import "./HomePageStyles.css"
+import AliceCarousel from 'react-alice-carousel';
 
 const HomePage = () => {
+    const [autoPlay, setAutoPlay] = useState(true);
     const xLight = "#f2f2f2"
     const languages = [
         {name:"JavaScript", icon:["https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg"]},
@@ -32,10 +38,51 @@ const HomePage = () => {
         </>
     )
 
+    const projects = [
+        {
+            title:"TellMe",
+            type:"Mobile App",
+            stack:"React Native/AWS",
+            info:"TellMe was my senior capstone project at the University of Utah. I was one of two front end developers on a team of four students who spent 6 months bringing our idea to life.",
+            images:[],
+            link:""
+        },
+        {
+            title:"TILT",
+            type:"Mobile App",
+            stack:"React Native/sqLite",
+            info:"TILT is an app I made as a pet project to get more experience with React Native. The app utilizes a phone's accelerometer to allow users to roll a marble around the screen while trying to not go off the designated path.",
+            images:[],
+            link:""
+        },
+        {
+            title:"SLC Air Quality",
+            type:"Data Visualization",
+            stack:"Jupyter Notebook (python pandas library)",
+            info:"something about TellMe",
+            images:[],
+            link:""
+        },
+        {
+            title:"TellMe",
+            type:"",
+            stack:"",
+            info:"something about TellMe",
+            images:[],
+            link:""
+        }
+    ]
+
+    const responsive = {
+        0: { items: 1 },
+        1000: { items: 2, itemsFit:'contain' },
+        2000: { items: 3, itemsFit:'contain' },
+        3000: { items: projects.length, itemsFit:'contain' } // This ensures all projects are shown at once on wider screens
+    };
 
     return(
         <div style={{display:'flex', flexDirection:'column', justifyContent:'flex-start', alignItems:'center'}}>
-            <div style={{width:1100, maxWidth:1240, minWidth:940}}>
+            <div style={{width:1100, maxWidth:1240, minWidth:940, position:'relative'}}>
                 
                 <div className='contactDiv'>
                     <div className='iconDiv'  onClick={() => {window.open("mailto:johnstevens2424@gmail.com");}}>
@@ -50,9 +97,6 @@ const HomePage = () => {
                         <IconBrandGithub size="50" className='contactIcon'/>
                         <div className='hoverText'>GitHub</div>
                     </div>
-                    
-                    
-                    
                 </div>
                 
                 
@@ -97,10 +141,61 @@ const HomePage = () => {
                 <hr></hr>
                 {/* Projects container */}
                 <div className='projectsContainer'>
-
-
+                    <h2>Here are a few projects I'm proud of</h2>
                 </div>
 
+            </div>
+            <div className='carouselDiv'>
+                {/* <Carousel 
+                    showArrows={true}
+                    showStatus={true}
+                    showThumbs={true}
+                    showIndicators={true}
+                    autoPlay={true}
+                    infiniteLoop={true}
+                    interval={5000} */}
+>
+                    {/* {images.map((image, index) => (
+                    <img key={index} className="slide" alt={`slide-${index}`} src={image}/>
+                    ))} */}
+                    {/* <div className='projectSlide'></div>
+                    <div className='projectSlide'></div>
+                    <div className='projectSlide'></div>
+                    <div className='projectSlide'></div>
+                    <div className='projectSlide'></div>
+                </Carousel> */}
+                <AliceCarousel
+                    animationEasingFunction='linear'
+                    autoPlay={autoPlay}
+                    infinite={true}
+                    animationDuration={18000}
+                    responsive={responsive}
+                    autoPlayInterval={50} // Set to 0 for continuous scrolling
+                    disableButtonsControls={true} // Hide next/prev buttons
+                    disableDotsControls={true} // Hide dots navigation
+                    autoPlayStrategy="all" // Ensure all items are considered in autoplay
+                    onMouseEnter={() => console.log('entering')} 
+                    onMouseLeave={() => setAutoPlay(true)}
+                >
+                    {
+                        projects.map((project, index) => (
+                            <div key={index} className='projectSlide'>
+                                <div className='projectSlideInfo'>
+                                    <h2>{project.title}</h2>
+                                    <p>Type: {project.type}</p>
+                                    <p>Tech Stack: {project.type}</p>
+                                    <br/>
+                                    <p>{project.info}</p>
+                                    <div style={{flex:1}}/>
+                                    <a href="">View on GitHub</a>
+                                    
+                                    
+                                </div>
+                                
+                            </div>
+                        ))
+                    }
+                </AliceCarousel>
             </div>
         </div>
     )
