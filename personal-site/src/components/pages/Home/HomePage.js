@@ -12,7 +12,6 @@ import AliceCarousel from 'react-alice-carousel';
 
 const HomePage = () => {
     const [autoPlay, setAutoPlay] = useState(true);
-    const xLight = "#f2f2f2"
     const languages = [
         {name:"JavaScript", icon:["https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg"]},
         {name:"Python", icon:["https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg"]},
@@ -59,7 +58,7 @@ const HomePage = () => {
             title:"SLC Air Quality",
             type:"Data Visualization",
             stack:"Jupyter Notebook (python pandas library)",
-            info:"something about TellMe",
+            info:"For a data visualization course, my group and I collected air quality data from sensors mounted on UTA busses and trains to evaluate Salt Lake City's air quality situation. After cleaning, we ended up with 4.5 million data points to turn into charts, some of which you can see here.",
             images:[require("../../../assets/images/SLCAirQualityImages/Inversion.png"), require("../../../assets/images/SLCAirQualityImages/InversionMedianHHValue.png"), require("../../../assets/images/SLCAirQualityImages/WildfireSmokeImage.png")],
             link:"https://github.com/johnstevens24/MobileAirQuality"
         }
@@ -74,7 +73,7 @@ const HomePage = () => {
 
     return(
         <div style={{display:'flex', flexDirection:'column', justifyContent:'flex-start', alignItems:'center'}}>
-            <div style={{width:1100, maxWidth:1240, minWidth:940, position:'relative'}}>
+            <div id="contentContainer">
                 
                 <div className='contactDiv'>
                     <div className='iconDiv'  onClick={() => {window.open("mailto:johnstevens2424@gmail.com");}}>
@@ -96,35 +95,33 @@ const HomePage = () => {
                 
                 {/* Bio container */}
                 <div className='bioContainer'>
-                    <div style={{width:'20%', aspectRatio:1, marginRight:'20px'}}>
+                    <div className='handDiv'>
                         <img src={require('../../../assets/images/hand.png')} className="hand"/>
                     </div>
-                    <div style={{width:'60%'}}>
+                    <div className="bioDiv">
                         {bioStuff}
                     </div>
                 </div>
                 <hr></hr>
                 {/* Languages container */}
                 <div className='languagesContainer'>
-                    <div style={{width:'40%'}}>
+                    <div className="languageInfo">
                         <h2>I'm most familiar with these languages</h2>
                         <p>I have used other languages and technologies, but these ones are where most of my experience lies.</p>
                     </div>
                     <div className='languageGrid'>
                         {languages.map((language, index) => (
-                            <div key={index} style={{display:'flex', flexDirection:'row', alignItems:'center', justifyContent:'space-between', height:'70px', width:'100%', backgroundColor:xLight, borderRadius:10, padding:'10px', paddingRight:'15%', paddingLeft:'15%'}}>
+                            <div key={index} className="languageItem">
                                 <div style={{position:'relative', height:'50px', aspectRatio:1}}>
                                     {language.icon.length > 1 ? 
                                         language.icon.map((icon, index) => (
-                                            
-                                            <img src={icon} style={{height:'50px', aspectRatio:1, position:'absolute', top:0, left:(language.icon.length-(1+index))*25}}/>
-                                            
+                                            <img key={index} src={icon} style={{height:'50px', aspectRatio:1, position:'absolute', top:0, left:(language.icon.length-(1+index))*25}}/>
                                         ))
                                     :
                                         <img src={language.icon} style={{height:'50px', aspectRatio:1}}/>
                                     }
                                 </div>
-                                <text>{language.name}</text>
+                                <p>{language.name}</p>
                             </div>
                         ))}
                     </div>
@@ -137,38 +134,18 @@ const HomePage = () => {
                 </div>
 
             </div>
-            <div className='carouselDiv'>
-                {/* <Carousel 
-                    showArrows={true}
-                    showStatus={true}
-                    showThumbs={true}
-                    showIndicators={true}
-                    autoPlay={true}
-                    infiniteLoop={true}
-                    interval={5000} */}
->
-                    {/* {images.map((image, index) => (
-                    <img key={index} className="slide" alt={`slide-${index}`} src={image}/>
-                    ))} */}
-                    {/* <div className='projectSlide'></div>
-                    <div className='projectSlide'></div>
-                    <div className='projectSlide'></div>
-                    <div className='projectSlide'></div>
-                    <div className='projectSlide'></div>
-                </Carousel> */}
+            <div className='carouselDiv' onMouseEnter={() => {console.log("entering"); setAutoPlay(false)}} onMouseLeave={() => {setAutoPlay(true)}}>
                 <AliceCarousel
                     animationEasingFunction='linear'
-                    autoPlay={true}
+                    autoPlay={autoPlay}
                     infinite={true}
                     animationDuration={18000}
                     responsive={responsive}
                     autoPlayInterval={50} // Set to 0 for continuous scrolling
                     disableButtonsControls={true} // Hide next/prev buttons
                     disableDotsControls={true} // Hide dots navigation
-                    autoPlayStrategy="all" // Ensure all items are considered in autoplay
-                    onMouseEnter={() => console.log('entering')} 
-                    onMouseLeave={() => setAutoPlay(true)}>
-                
+                    autoPlayStrategy='default'
+                    >
                     {
                         projects.map((project, index) => (
                             <div key={index} className='projectSlide'>
@@ -184,8 +161,8 @@ const HomePage = () => {
                                 <div className='projectSlideImages'>
                                     <AliceCarousel autoPlay={true} disableButtonsControls={true} animationDuration={1000} infinite={true} autoPlayInterval={5000}>
                                         {project.images.map((image, index) => (
-                                            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%' }}>
-                                                <img src={image} style={{maxWidth:'100%', maxHeight:'300px', }}/>
+                                            <div key={index} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%' }}>
+                                                <img src={image} style={{maxWidth:'100%', maxHeight:'300px', border:'1px solid lightgrey'}}/>
                                             </div>
                                             
                                         ))}
