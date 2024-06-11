@@ -44,40 +44,32 @@ const HomePage = () => {
             type:"Mobile App",
             stack:"React Native/AWS",
             info:"TellMe was my senior capstone project at the University of Utah. I was one of two front end developers on a team of four students who spent 6 months bringing our idea to life.",
-            images:[],
-            link:""
+            images:[require("../../../assets/images/TellMeScreenshots/IMG_4305.PNG"), require("../../../assets/images/TellMeScreenshots/IMG_4306.PNG"), require("../../../assets/images/TellMeScreenshots/IMG_4310.PNG"), require("../../../assets/images/TellMeScreenshots/IMG_4311.PNG")],
+            link:"https://github.com/johnstevens24/TellMe"
         },
         {
             title:"TILT",
             type:"Mobile App",
             stack:"React Native/sqLite",
             info:"TILT is an app I made as a pet project to get more experience with React Native. The app utilizes a phone's accelerometer to allow users to roll a marble around the screen while trying to not go off the designated path.",
-            images:[],
-            link:""
+            images:[require("../../../assets/images/TiltScreenshots/IMG_4563.PNG"), require("../../../assets/images/TiltScreenshots/IMG_4564.PNG")],
+            link:"https://github.com/johnstevens24/Tilt"
         },
         {
             title:"SLC Air Quality",
             type:"Data Visualization",
             stack:"Jupyter Notebook (python pandas library)",
             info:"something about TellMe",
-            images:[],
-            link:""
-        },
-        {
-            title:"TellMe",
-            type:"",
-            stack:"",
-            info:"something about TellMe",
-            images:[],
-            link:""
+            images:[require("../../../assets/images/SLCAirQualityImages/Inversion.png"), require("../../../assets/images/SLCAirQualityImages/InversionMedianHHValue.png"), require("../../../assets/images/SLCAirQualityImages/WildfireSmokeImage.png")],
+            link:"https://github.com/johnstevens24/MobileAirQuality"
         }
     ]
 
     const responsive = {
         0: { items: 1 },
-        1000: { items: 2, itemsFit:'contain' },
-        2000: { items: 3, itemsFit:'contain' },
-        3000: { items: projects.length, itemsFit:'contain' } // This ensures all projects are shown at once on wider screens
+        1500: { items: 2, itemsFit:'contain' },
+        2200: { items: 3, itemsFit:'contain' },
+        2900: { items: projects.length, itemsFit:'contain' } // This ensures all projects are shown at once on wider screens
     };
 
     return(
@@ -166,7 +158,7 @@ const HomePage = () => {
                 </Carousel> */}
                 <AliceCarousel
                     animationEasingFunction='linear'
-                    autoPlay={autoPlay}
+                    autoPlay={true}
                     infinite={true}
                     animationDuration={18000}
                     responsive={responsive}
@@ -175,8 +167,8 @@ const HomePage = () => {
                     disableDotsControls={true} // Hide dots navigation
                     autoPlayStrategy="all" // Ensure all items are considered in autoplay
                     onMouseEnter={() => console.log('entering')} 
-                    onMouseLeave={() => setAutoPlay(true)}
-                >
+                    onMouseLeave={() => setAutoPlay(true)}>
+                
                     {
                         projects.map((project, index) => (
                             <div key={index} className='projectSlide'>
@@ -187,11 +179,18 @@ const HomePage = () => {
                                     <br/>
                                     <p>{project.info}</p>
                                     <div style={{flex:1}}/>
-                                    <a href="">View on GitHub</a>
-                                    
-                                    
+                                    <a href={project.link} target="_blank" rel="noopener noreferrer">View on GitHub</a>
                                 </div>
-                                
+                                <div className='projectSlideImages'>
+                                    <AliceCarousel autoPlay={true} disableButtonsControls={true} animationDuration={1000} infinite={true} autoPlayInterval={5000}>
+                                        {project.images.map((image, index) => (
+                                            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%' }}>
+                                                <img src={image} style={{maxWidth:'100%', maxHeight:'300px', }}/>
+                                            </div>
+                                            
+                                        ))}
+                                    </AliceCarousel>
+                                </div>
                             </div>
                         ))
                     }
