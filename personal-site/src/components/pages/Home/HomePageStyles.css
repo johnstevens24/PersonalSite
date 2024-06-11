@@ -227,11 +227,22 @@ h2 {
     align-items: center;
 }
 
-
+.mobileProjectDiv {
+    display: none;
+}
 
 
 
 @media (max-width: 900px) {
+
+    h1 {
+        line-height: 90%;
+    }
+
+    h2 {
+        line-height: 95%;
+    }
+
     .contactDiv {
         width:0px;
         height:0px;
@@ -299,13 +310,42 @@ h2 {
     }
 
     .languageItem img {
-        display: none; /* Hide all images initially */
+        display: none;
     }
     
     .languageItem img:last-child {
-        display: block; /* Show only the first child image */
+        display: block;
     }
 
+    .carouselDiv {
+        display: none;
+    }
     
+    .mobileProjectDiv {
+        display: block;
+    }
 
+    .mobileProjectSlide {
+        width: 100%;
+        padding: 10px;
+        /* background-color: aqua; */
+        margin-bottom: 2rem;
+    }
+
+    .mobileProjectSlide h2 {
+        margin-bottom: .5rem;
+    }
+
+    .mobileProjectDiv a {
+        color: #f2f2f2;
+        background-color: black;
+        padding:.5rem;
+        border-radius: 100px;
+    }
+
+    .mobileCarouselContainer {
+        width: 300px;
+        height: 90%;
+        background-color: white;
+    }
 }

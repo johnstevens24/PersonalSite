@@ -18,7 +18,7 @@ const HomePage = () => {
         {name:"Java", icon:["https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg"]},
         {name:"HTML5/CSS", icon:["https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg"]},
         {name:"SQL", icon:["https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azuresqldatabase/azuresqldatabase-original.svg"]},
-        {name:"sqlite", icon:["https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sqlite/sqlite-original.svg"]},
+        {name:"Git", icon:["https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg"]},
         {name:"C/C++/C#", icon:["https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/csharp/csharp-original.svg", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/c/c-original.svg"]},
         {name:"JSON", icon:["https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/json/json-original.svg"]},
         {name:"React", icon:["https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg"]},
@@ -172,6 +172,29 @@ const HomePage = () => {
                         ))
                     }
                 </AliceCarousel>
+            </div>
+            <div className='mobileProjectDiv'>
+                {projects.map((project, index) => (
+                    <div key={index} className='mobileProjectSlide'>
+                        <h2>{project.title}</h2>
+                        <p>Type: {project.type}</p>
+                        <p>Tech Stack: {project.type}</p>
+                        <br/>
+                        <p>{project.info}</p>
+                        <br/>
+                        <a href={project.link} target="_blank" rel="noopener noreferrer">View on GitHub</a>
+
+                        {/* <div className='mobileCarouselContainer'>
+                            <AliceCarousel autoPlay={true} disableButtonsControls={true} animationDuration={1000} infinite={true} autoPlayInterval={5000} animationEasingFunction='ease'>
+                                {project.images.map((image, index) => (
+                                    <div key={index} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%' }}>
+                                        <img src={image} style={{maxWidth:'100%', maxHeight:'50%', border:'1px solid lightgrey'}}/>
+                                    </div>
+                                ))}
+                            </AliceCarousel>
+                        </div> */}
+                    </div>
+                ))}
             </div>
         </div>
     )
