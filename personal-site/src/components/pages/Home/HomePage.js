@@ -12,6 +12,7 @@ import AliceCarousel from 'react-alice-carousel';
 
 const HomePage = () => {
     const [autoPlay, setAutoPlay] = useState(true);
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth)
     const languages = [
         {name:"JavaScript", icon:["https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg"]},
         {name:"Python", icon:["https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg"]},
@@ -65,11 +66,25 @@ const HomePage = () => {
     ]
 
     const responsive = {
-        0: { items: 1 },
+        0: { items: 1, itemsFit:'contain' },
         1500: { items: 2, itemsFit:'contain' },
         2200: { items: 3, itemsFit:'contain' },
         2900: { items: projects.length, itemsFit:'contain' } // This ensures all projects are shown at once on wider screens
     };
+
+    //this is necessary for the mobile version because for some reason the CSS for the AliceCarousel doesn't work when I simply use width:'100%' (or any variation of something similar)
+    useEffect(() => {
+        const handleResize = () => {
+            
+            setWindowWidth(window.innerWidth)
+        };
+        console.log(windowWidth)
+        window.addEventListener('resize', handleResize);
+
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
 
     return(
         <div style={{display:'flex', flexDirection:'column', justifyContent:'flex-start', alignItems:'center'}}>
@@ -89,9 +104,6 @@ const HomePage = () => {
                         <div className='hoverText'>GitHub</div>
                     </div>
                 </div>
-                
-                
-                
                 
                 {/* Bio container */}
                 <div className='bioContainer'>
@@ -133,7 +145,32 @@ const HomePage = () => {
                     <h2>Here are a few projects I'm proud of</h2>
                 </div>
 
+                <div className='mobileProjectDiv'>
+                    {projects.map((project, index) => (
+                        <div key={index} className='mobileProjectSlide' style={{width:`${windowWidth}px`}}>
+                            <h2>{project.title}</h2>
+                            <p>Type: {project.type}</p>
+                            <p>Tech Stack: {project.type}</p>
+                            <br/>
+                            <p>{project.info}</p>
+                            <br/>
+                            <a href={project.link} target="_blank" rel="noopener noreferrer">View on GitHub</a>
+                            <div className='mobileCarouselContainer'>
+                                <AliceCarousel responsive={responsive} autoPlay={true} disableButtonsControls={true} animationDuration={1000} infinite={true} autoPlayInterval={5000} animationEasingFunction='ease' >
+                                    {project.images.map((image, index) => (
+                                        <div key={index} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%', width:'100%'}}>
+                                            <img src={image} style={{width:'90%'}}/>
+                                        </div>
+                                    ))}
+                                </AliceCarousel>
+                                
+                            </div>
+                    </div>
+                ))}
             </div>
+
+            </div>
+
             <div className='carouselDiv' onMouseEnter={() => {console.log("entering"); setAutoPlay(false)}} onMouseLeave={() => {setAutoPlay(true)}}>
                 <AliceCarousel
                     animationEasingFunction='linear'
@@ -173,29 +210,7 @@ const HomePage = () => {
                     }
                 </AliceCarousel>
             </div>
-            <div className='mobileProjectDiv'>
-                {projects.map((project, index) => (
-                    <div key={index} className='mobileProjectSlide'>
-                        <h2>{project.title}</h2>
-                        <p>Type: {project.type}</p>
-                        <p>Tech Stack: {project.type}</p>
-                        <br/>
-                        <p>{project.info}</p>
-                        <br/>
-                        <a href={project.link} target="_blank" rel="noopener noreferrer">View on GitHub</a>
 
-                        {/* <div className='mobileCarouselContainer'>
-                            <AliceCarousel autoPlay={true} disableButtonsControls={true} animationDuration={1000} infinite={true} autoPlayInterval={5000} animationEasingFunction='ease'>
-                                {project.images.map((image, index) => (
-                                    <div key={index} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%' }}>
-                                        <img src={image} style={{maxWidth:'100%', maxHeight:'50%', border:'1px solid lightgrey'}}/>
-                                    </div>
-                                ))}
-                            </AliceCarousel>
-                        </div> */}
-                    </div>
-                ))}
-            </div>
         </div>
     )
 }

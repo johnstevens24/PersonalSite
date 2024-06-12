@@ -1,13 +1,10 @@
 import React from 'react'
 
+import "./footerStyles.css"
+
 const Footer = () => {
     const width = window.innerWidth
 
-    if(width < 940)
-        return(
-            <>
-            </>
-        )
     return (
         <div style={{width:'100%', height:'80px', marginTop:'20px', borderTop:"1px black solid", display:'flex', flexDirection:'row', alignItems:'center', justifyContent:'space-evenly'}}>
             

@@ -321,15 +321,25 @@ h2 {
         display: none;
     }
     
+    .projectsContainer {
+        padding-left: 10px;
+    }
+
     .mobileProjectDiv {
-        display: block;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        width: 100%;
     }
 
     .mobileProjectSlide {
-        width: 100%;
-        padding: 10px;
+        /* width: 375px; */
+        padding: 20px;
         /* background-color: aqua; */
         margin-bottom: 2rem;
+        background-color: #f2f2f2;
+        border-radius: 10px;
     }
 
     .mobileProjectSlide h2 {
@@ -344,8 +354,7 @@ h2 {
     }
 
     .mobileCarouselContainer {
-        width: 300px;
-        height: 90%;
-        background-color: white;
+        /* width: 300px; */
+        margin-top: 2rem;
     }
 }
