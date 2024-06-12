@@ -3,15 +3,14 @@ import { useState, useEffect } from 'react'
 import { IconMail } from '@tabler/icons-react';
 import { IconBrandLinkedin } from '@tabler/icons-react';
 import { IconBrandGithub } from '@tabler/icons-react';
-import { Carousel } from 'react-responsive-carousel';
-import 'react-responsive-carousel/lib/styles/carousel.min.css'; // Import carousel styles
-import 'react-alice-carousel/lib/alice-carousel.css';
+// import { Carousel } from 'react-responsive-carousel';
+// import 'react-responsive-carousel/lib/styles/carousel.min.css'; // Import carousel styles
 
 import "./HomePageStyles.css"
 import AliceCarousel from 'react-alice-carousel';
+import 'react-alice-carousel/lib/alice-carousel.css';
 
 const HomePage = () => {
-    const [autoPlay, setAutoPlay] = useState(true);
     const [windowWidth, setWindowWidth] = useState(window.innerWidth)
     const languages = [
         {name:"JavaScript", icon:["https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg"]},
@@ -72,6 +71,30 @@ const HomePage = () => {
         2900: { items: projects.length, itemsFit:'contain' } // This ensures all projects are shown at once on wider screens
     };
 
+    const projectSlides = projects.map((project, index) => (
+        <div key={index} className='projectSlide'>
+            <div className='projectSlideInfo'>
+                <h2>{project.title}</h2>
+                <p>Type: {project.type}</p>
+                <p>Tech Stack: {project.type}</p>
+                <br/>
+                <p>{project.info}</p>
+                <div style={{flex:1}}/>
+                <a href={project.link} target="_blank" rel="noopener noreferrer">View on GitHub</a>
+            </div>
+            <div className='projectSlideImages'>
+                <AliceCarousel autoPlay={true} disableButtonsControls={true} animationDuration={1000} infinite={true} autoPlayInterval={5000}>
+                    {project.images.map((image, index) => (
+                        <div key={index} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%' }}>
+                            <img src={image} style={{maxWidth:'100%', maxHeight:'300px', border:'1px solid lightgrey'}}/>
+                        </div>
+                        
+                    ))}
+                </AliceCarousel>
+            </div>
+        </div>
+    ))
+
     //this is necessary for the mobile version because for some reason the CSS for the AliceCarousel doesn't work when I simply use width:'100%' (or any variation of something similar)
     useEffect(() => {
         const handleResize = () => {
@@ -107,8 +130,8 @@ const HomePage = () => {
                 
                 {/* Bio container */}
                 <div className='bioContainer'>
-                    <div className='handDiv'>
-                        <img src={require('../../../assets/images/hand.png')} className="hand"/>
+                    <div className='profPicDiv'>
+                        <img src={require('../../../assets/images/Me/John_700x700.png')} className="profPic"/>
                     </div>
                     <div className="bioDiv">
                         {bioStuff}
@@ -171,44 +194,20 @@ const HomePage = () => {
 
             </div>
 
-            <div className='carouselDiv' onMouseEnter={() => {console.log("entering"); setAutoPlay(false)}} onMouseLeave={() => {setAutoPlay(true)}}>
+            <div className='carouselDiv'>
                 <AliceCarousel
+                     mouseTracking
                     animationEasingFunction='linear'
-                    autoPlay={autoPlay}
+                    autoPlay={true}
                     infinite={true}
                     animationDuration={18000}
                     responsive={responsive}
-                    autoPlayInterval={50} // Set to 0 for continuous scrolling
+                    // autoPlayInterval={50} // Set to 0 for continuous scrolling
                     disableButtonsControls={true} // Hide next/prev buttons
                     disableDotsControls={true} // Hide dots navigation
                     autoPlayStrategy='default'
-                    >
-                    {
-                        projects.map((project, index) => (
-                            <div key={index} className='projectSlide'>
-                                <div className='projectSlideInfo'>
-                                    <h2>{project.title}</h2>
-                                    <p>Type: {project.type}</p>
-                                    <p>Tech Stack: {project.type}</p>
-                                    <br/>
-                                    <p>{project.info}</p>
-                                    <div style={{flex:1}}/>
-                                    <a href={project.link} target="_blank" rel="noopener noreferrer">View on GitHub</a>
-                                </div>
-                                <div className='projectSlideImages'>
-                                    <AliceCarousel autoPlay={true} disableButtonsControls={true} animationDuration={1000} infinite={true} autoPlayInterval={5000}>
-                                        {project.images.map((image, index) => (
-                                            <div key={index} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%' }}>
-                                                <img src={image} style={{maxWidth:'100%', maxHeight:'300px', border:'1px solid lightgrey'}}/>
-                                            </div>
-                                            
-                                        ))}
-                                    </AliceCarousel>
-                                </div>
-                            </div>
-                        ))
-                    }
-                </AliceCarousel>
+                    items={projectSlides}
+                    />
             </div>
 
         </div>
