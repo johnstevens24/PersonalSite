@@ -1,8 +1,7 @@
 import React from 'react'
-import { useState, useEffect } from 'react'
-import { IconMail } from '@tabler/icons-react';
-import { IconBrandLinkedin } from '@tabler/icons-react';
-import { IconBrandGithub } from '@tabler/icons-react';
+import { useState, useEffect, useRef, scroll } from 'react'
+import { IconMail, IconBrandLinkedin, IconBrandGithub, IconX } from '@tabler/icons-react';
+
 // import { Carousel } from 'react-responsive-carousel';
 // import 'react-responsive-carousel/lib/styles/carousel.min.css'; // Import carousel styles
 
@@ -12,6 +11,10 @@ import 'react-alice-carousel/lib/alice-carousel.css';
 
 const HomePage = () => {
     const [windowWidth, setWindowWidth] = useState(window.innerWidth)
+
+    const popupRef = useRef(null)
+    const [popupInfo, setPopupInfo] = useState(<h2>Loading...</h2>)
+
     const languages = [
         {name:"JavaScript", icon:["https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg"]},
         {name:"Python", icon:["https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg"]},
@@ -43,6 +46,7 @@ const HomePage = () => {
             type:"Mobile App",
             stack:"React Native/AWS",
             info:"TellMe was my senior capstone project at the University of Utah. I was one of two front end developers on a team of four students who spent 6 months bringing our idea to life.",
+            longInfo:"TellMe was my senior capstone project at the University of Utah. I was one of two front end developers on a team of four students who spent 6 months making a social media app where users could post short form videos asking for advice and recieve responses in a manner of their choosing. I was responsible for the front end of user creation, user login, the user profile page, user settings pages, the scrollable home feed, and the user followup pages. We used expo go during development to be able to be able to have a running demo of the app and see the impact of new code in real time.",
             images:[require("../../../assets/images/TellMeScreenshots/IMG_4305.PNG"), require("../../../assets/images/TellMeScreenshots/IMG_4306.PNG"), require("../../../assets/images/TellMeScreenshots/IMG_4310.PNG"), require("../../../assets/images/TellMeScreenshots/IMG_4311.PNG")],
             link:"https://github.com/johnstevens24/TellMe"
         },
@@ -51,6 +55,7 @@ const HomePage = () => {
             type:"Mobile App",
             stack:"React Native/sqLite",
             info:"TILT is an app I made as a pet project to get more experience with React Native. The app utilizes a phone's accelerometer to allow users to roll a marble around the screen while trying to not go off the designated path.",
+            longInfo: "TILT is an app I made as a pet project to get more experience with React Native. The app utilizes a phone's accelerometer to allow users to roll a marble around the screen while trying to not go off the designated path. This gave me practice with animations as well as the opportunity to implement other features such as a sqlite database for storing users and their fastest time through each level. When a user completes a level, they are able to view their fastest time displayed on a leaderboard with all the other users (sorted by fastest time first).",
             images:[require("../../../assets/images/TiltScreenshots/IMG_4563.PNG"), require("../../../assets/images/TiltScreenshots/IMG_4564.PNG")],
             link:"https://github.com/johnstevens24/Tilt"
         },
@@ -59,6 +64,7 @@ const HomePage = () => {
             type:"Data Visualization",
             stack:"Jupyter Notebook (python pandas library)",
             info:"For a data visualization course, my group and I collected air quality data from sensors mounted on UTA busses and trains to evaluate Salt Lake City's air quality situation. After cleaning, we ended up with 4.5 million data points to turn into charts, some of which you can see here.",
+            longInfo:"For a data visualization course, my group and I collected air quality data from sensors mounted on UTA (Utah Transit Authority) busses and trains to evaluate Salt Lake City's air quality situation. Since we all live in Salt Lake, we're aware that the air here is sometimes the worst in the world. We live in giant bowl, which during the winter traps smog creating a blanket over the valley. However, we've always been told that its worse on the west side, an area of lower median household income, higher immigrant population, and slighlty lower elevation. We set out to see if we could either dispel or support that claim. We analyzed millions of rows of air quality data as well as median household income data by district on days documented to have had severe air quality (such as a day with particularly bad wildfire smoke present) as well as yearly, monthly, and seasonal averages. We came to the conclusion that yes, the air is worse on the west side, but only buy a small amount. Its really awful everywhere, but on our worst air quality days, the east side has it slightly better than the west.",
             images:[require("../../../assets/images/SLCAirQualityImages/Inversion.png"), require("../../../assets/images/SLCAirQualityImages/InversionMedianHHValue.png"), require("../../../assets/images/SLCAirQualityImages/WildfireSmokeImage.png")],
             link:"https://github.com/johnstevens24/MobileAirQuality"
         }
@@ -72,18 +78,17 @@ const HomePage = () => {
     };
 
     const projectSlides = projects.map((project, index) => (
-        <div key={index} className='projectSlide'>
+        <div key={index} className='projectSlide' onClick={()=>(openPopup(project.title))}>
             <div className='projectSlideInfo'>
                 <h2>{project.title}</h2>
                 <p>Type: {project.type}</p>
-                <p>Tech Stack: {project.type}</p>
                 <br/>
                 <p>{project.info}</p>
                 <div style={{flex:1}}/>
-                <a href={project.link} target="_blank" rel="noopener noreferrer">View on GitHub</a>
+                {/* <a href={project.link} target="_blank" rel="noopener noreferrer">View on GitHub</a> */}
             </div>
             <div className='projectSlideImages'>
-                <AliceCarousel autoPlay={true} disableButtonsControls={true} animationDuration={1000} infinite={true} autoPlayInterval={5000}>
+                <AliceCarousel autoPlay={true} disableButtonsControls={true} animationDuration={1000} infinite={true} autoPlayInterval={3000} disableDotsControls={true}>
                     {project.images.map((image, index) => (
                         <div key={index} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%' }}>
                             <img src={image} style={{maxWidth:'100%', maxHeight:'300px', border:'1px solid lightgrey'}}/>
@@ -108,6 +113,56 @@ const HomePage = () => {
             window.removeEventListener('resize', handleResize);
         };
     }, []);
+
+    function openPopup(projectName) {
+        let project = null;
+
+        for(let i = 0; i < projects.length; i++){
+            if(projects[i].title == projectName)
+            {
+                project = projects[i];
+                console.log(project.title)
+                break;
+            }
+        }
+        
+        setPopupInfo(
+            <div style={{width:'100%', height:'100%', padding:'15px', display:'flex', flexDirection:'row', justifyContent:'flex-start', alignContent:'center'}}>
+                <div className='projectSlideInfo' style={{height:'490px'}}>
+                    <h2>{project.title}</h2>
+                    <p>Type: {project.type}</p>
+                    <p>Tech Stack: {project.stack}</p>
+                    <div className='infoScroller' style={{flex:1, overflow:'scroll', overflowX:'hidden', marginTop:'20px', marginBottom:'20px'}}>
+                        <p>{project.longInfo}</p>
+                    </div>
+                    <a href={project.link} target="_blank" rel="noopener noreferrer">View on GitHub</a>
+                </div>
+                <div className='projectSlideImages'>
+                    <AliceCarousel autoPlay={false} disableDotsControls={true} animationDuration={500}>
+                        {project.images.map((image, index) => (
+                            <div key={index} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%' }}>
+                                <img src={image} style={{maxWidth:'100%', maxHeight:'300px', border:'1px solid lightgrey'}}/>
+                            </div>
+                            
+                        ))}
+                    </AliceCarousel>
+            </div>
+            </div>)
+        
+        if(popupRef != null)
+            {
+                popupRef.current.classList.remove("hideProjectPopup")   
+            }
+
+    }
+
+    function closePopup() {
+        if(popupRef != null)
+        {
+            popupRef.current.classList.add("hideProjectPopup")   
+        }
+    }
+
 
     return(
         <div style={{display:'flex', flexDirection:'column', justifyContent:'flex-start', alignItems:'center'}}>
@@ -196,20 +251,25 @@ const HomePage = () => {
 
             <div className='carouselDiv'>
                 <AliceCarousel
-                     mouseTracking
+                    //  mouseTracking
                     animationEasingFunction='linear'
                     autoPlay={true}
                     infinite={true}
-                    animationDuration={18000}
+                    animationDuration={20000}
                     responsive={responsive}
-                    // autoPlayInterval={50} // Set to 0 for continuous scrolling
+                    autoPlayInterval={50} // Set to 0 for continuous scrolling
                     disableButtonsControls={true} // Hide next/prev buttons
                     disableDotsControls={true} // Hide dots navigation
                     autoPlayStrategy='default'
                     items={projectSlides}
                     />
             </div>
-
+            <div ref={popupRef} className='projectPopup hideProjectPopup'>
+                <div style={{display:'flex', flexDirection:'row', justifyContent:'flex-end', height:'50px', width:'100%'}}>
+                    <IconX size="50" className='closeIcon' onClick={() => closePopup()}/>
+                </div>
+                {popupInfo}
+            </div>
         </div>
     )
 }
