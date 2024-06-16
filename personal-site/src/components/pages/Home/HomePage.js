@@ -11,9 +11,10 @@ import 'react-alice-carousel/lib/alice-carousel.css';
 
 const HomePage = () => {
     const [windowWidth, setWindowWidth] = useState(window.innerWidth)
-
     const popupRef = useRef(null)
     const [popupInfo, setPopupInfo] = useState(<h2>Loading...</h2>)
+    const [largeImage, setLargeImage] = useState(null)
+    const imageRef = useRef(null)
 
     const languages = [
         {name:"JavaScript", icon:["https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg"]},
@@ -46,7 +47,7 @@ const HomePage = () => {
             type:"Mobile App",
             stack:"React Native/AWS",
             info:"TellMe was my senior capstone project at the University of Utah. I was one of two front end developers on a team of four students who spent 6 months bringing our idea to life.",
-            longInfo:"TellMe was my senior capstone project at the University of Utah. I was one of two front end developers on a team of four students who spent 6 months making a social media app where users could post short form videos asking for advice and recieve responses in a manner of their choosing. I was responsible for the front end of user creation, user login, the user profile page, user settings pages, the scrollable home feed, and the user followup pages. We used expo go during development to be able to be able to have a running demo of the app and see the impact of new code in real time.",
+            longInfo:"TellMe was my senior capstone project at the University of Utah. I was one of two front end developers on a team of four students who spent 6 months making a social media app where users could post short form videos asking for advice and recieve responses in a manner of their choosing. I was responsible for the front ends of user creation, user login, the user profile page, user settings pages, the scrollable home feed, and the user followup pages. For each of these screens, we created mockups in figma and made our UIs based on the figma images. We used expo go during development to be able to be able to have a running demo of the app and see the impact of new code in real time.",
             images:[require("../../../assets/images/TellMeScreenshots/IMG_4305.PNG"), require("../../../assets/images/TellMeScreenshots/IMG_4306.PNG"), require("../../../assets/images/TellMeScreenshots/IMG_4310.PNG"), require("../../../assets/images/TellMeScreenshots/IMG_4311.PNG")],
             link:"https://github.com/johnstevens24/TellMe"
         },
@@ -127,8 +128,8 @@ const HomePage = () => {
         }
         
         setPopupInfo(
-            <div style={{width:'100%', height:'100%', padding:'15px', display:'flex', flexDirection:'row', justifyContent:'flex-start', alignContent:'center'}}>
-                <div className='projectSlideInfo' style={{height:'490px'}}>
+            <div style={{position:'relative', width:'100%', height:'100%', padding:'15px', display:'flex', flexDirection:'row', justifyContent:'flex-start', alignContent:'center'}}>
+                <div className='projectSlideInfo' style={{height:'490px', width: '50%'}}>
                     <h2>{project.title}</h2>
                     <p>Type: {project.type}</p>
                     <p>Tech Stack: {project.stack}</p>
@@ -137,21 +138,26 @@ const HomePage = () => {
                     </div>
                     <a href={project.link} target="_blank" rel="noopener noreferrer">View on GitHub</a>
                 </div>
-                <div className='projectSlideImages'>
+                <div className='projectSlideImages' style={{width: "50%"}}>
                     <AliceCarousel autoPlay={false} disableDotsControls={true} animationDuration={500}>
                         {project.images.map((image, index) => (
-                            <div key={index} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%' }}>
+                            <div key={index} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%'}} onClick={() => {setLargeImage(image); console.log(image); imageRef.current.classList.remove("hidden")}}>
                                 <img src={image} style={{maxWidth:'100%', maxHeight:'300px', border:'1px solid lightgrey'}}/>
                             </div>
                             
                         ))}
                     </AliceCarousel>
-            </div>
+                </div>
+                
+                <div ref={imageRef} className="largeImageContainer hidden">
+                    <img id="largeImage" src={largeImage} style={{maxWidth:'100%', maxHeight:'100%'}} onClick={() => {imageRef.current.classList.add("hidden")}}/>
+                </div>
+                
             </div>)
         
         if(popupRef != null)
             {
-                popupRef.current.classList.remove("hideProjectPopup")   
+                popupRef.current.classList.remove("hidden")   
             }
 
     }
@@ -159,7 +165,11 @@ const HomePage = () => {
     function closePopup() {
         if(popupRef != null)
         {
-            popupRef.current.classList.add("hideProjectPopup")   
+            popupRef.current.classList.add("hidden")   
+        }
+        if(imageRef != null)
+        {
+            imageRef.current.classList.add("hidden");
         }
     }
 
@@ -264,7 +274,7 @@ const HomePage = () => {
                     items={projectSlides}
                     />
             </div>
-            <div ref={popupRef} className='projectPopup hideProjectPopup'>
+            <div ref={popupRef} className='projectPopup hidden'>
                 <div style={{display:'flex', flexDirection:'row', justifyContent:'flex-end', height:'50px', width:'100%'}}>
                     <IconX size="50" className='closeIcon' onClick={() => closePopup()}/>
                 </div>
