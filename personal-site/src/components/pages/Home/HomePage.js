@@ -149,10 +149,6 @@ const HomePage = () => {
                     </AliceCarousel>
                 </div>
                 
-                <div ref={imageRef} className="largeImageContainer hidden">
-                    <img id="largeImage" src={largeImage} style={{maxWidth:'100%', maxHeight:'100%'}} onClick={() => {imageRef.current.classList.add("hidden")}}/>
-                </div>
-                
             </div>)
         
         if(popupRef != null)
@@ -280,7 +276,11 @@ const HomePage = () => {
                 </div>
                 {popupInfo}
             </div>
+            <div ref={imageRef} className="largeImageContainer">
+                    <img id="largeImage" src={largeImage} style={{maxWidth:'100%', maxHeight:'100%'}} onClick={() => {imageRef.current.classList.add("hidden")}}/>
+            </div>
         </div>
+        
     )
 }
 
