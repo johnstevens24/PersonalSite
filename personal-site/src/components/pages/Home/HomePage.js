@@ -57,7 +57,7 @@ const HomePage = () => {
             stack:"React Native/SQLite",
             info:"TILT is an app I made as a pet project to get more experience with React Native. The app utilizes a phone's accelerometer to allow users to roll a marble around the screen while trying to not go off the designated path.",
             longInfo: "TILT is an app I made as a pet project to get more experience with React Native. The app utilizes a phone's accelerometer to allow users to roll a marble around the screen while trying to not go off the designated path. This gave me practice with animations as well as the opportunity to implement other features such as a SQlite database for storing users and their fastest time through each level. When a user completes a level, they are able to view their fastest time displayed on a leaderboard with all the other users (sorted by fastest time first).",
-            images:[require("../../../assets/images/TiltScreenshots/IMG_4563.PNG"), require("../../../assets/images/TiltScreenshots/IMG_4564.PNG")],
+            images:[require("../../../assets/images/TiltScreenshots/IMG_4609.PNG"), require("../../../assets/images/TiltScreenshots/IMG_4563.PNG"), require("../../../assets/images/TiltScreenshots/IMG_4564.PNG")],
             link:"https://github.com/johnstevens24/Tilt"
         },
         {
@@ -276,7 +276,7 @@ const HomePage = () => {
                 </div>
                 {popupInfo}
             </div>
-            <div ref={imageRef} className="largeImageContainer">
+            <div ref={imageRef} className="largeImageContainer hidden">
                     <img id="largeImage" src={largeImage} style={{maxWidth:'100%', maxHeight:'100%'}} onClick={() => {imageRef.current.classList.add("hidden")}}/>
             </div>
         </div>
