@@ -9,6 +9,10 @@ import About from "./components/pages/About/About.js"
 import Projects from "./components/pages/Projects/Projects.js"
 import Contact from "./components/pages/Contact/Contact.js"
 import HomePage from './components/pages/Home/HomePage.js';
+import SampleProductPage from './components/pages/sampleProductPage/sampleProductPage.js';
+
+
+// import 'bootstrap/dist/js/bootstrap.bundle.min';
 
 function App() {
 
@@ -38,8 +42,8 @@ function App() {
       </Routes>
       <Footer/>
     </BrowserRouter> */}
-    <HomePage/>
-    <Footer/>
+    {/* <HomePage/> */}
+    <SampleProductPage/>
   </>
   );
 }

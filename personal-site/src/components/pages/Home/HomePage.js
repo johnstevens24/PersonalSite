@@ -2,6 +2,7 @@ import React from 'react'
 import { useState, useEffect, useRef, scroll } from 'react'
 import { IconMail, IconBrandLinkedin, IconBrandGithub, IconX } from '@tabler/icons-react';
 
+import Footer from './../../../components/footer/Footer.js'
 // import { Carousel } from 'react-responsive-carousel';
 // import 'react-responsive-carousel/lib/styles/carousel.min.css'; // Import carousel styles
 
@@ -171,6 +172,7 @@ const HomePage = () => {
 
 
     return(
+        <>
         <div style={{display:'flex', flexDirection:'column', justifyContent:'flex-start', alignItems:'center'}}>
             <div id="contentContainer">
                 
@@ -280,7 +282,8 @@ const HomePage = () => {
                     <img id="largeImage" src={largeImage} style={{maxWidth:'100%', maxHeight:'100%'}} onClick={() => {imageRef.current.classList.add("hidden")}}/>
             </div>
         </div>
-        
+        <Footer></Footer>
+        </>
     )
 }
 
